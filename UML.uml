@@ -1,0 +1,50 @@
+@startuml
+!theme crt-amber
+class GameHandler{
+
+}
+
+class LevelHandler extends JPanel{
+
+}
+
+class HUD{
+
+}
+
+class Player extends Collidable{
+
+
+}
+
+class Collectible extends Collidable{
+
+}
+
+class Enemy extends Collidable{
+
+}
+
+class Level extends JComponent{
+
+}
+
+
+class Platform extends Collidable{
+
+}
+
+class Collidable{
+
+}
+
+GameHandler --> Level
+GameHandler --> LevelHandler
+LevelHandler ..> Player
+LevelHandler -->"*" Level
+Level --> HUD
+Level -->"*" Collidable
+Player ..> HUD
+
+
+@enduml
