@@ -16,7 +16,8 @@ public class GamePanel extends JPanel{
 		   add(scoreLabel);
 		   add(addPointButton);
 		   add(endGameButton);
-		          
+		   
+		   
 		  addPointButton.addActionListener(e -> addScores());
 		  endGameButton.addActionListener(e -> onEndGame());
 		}
@@ -27,16 +28,17 @@ public class GamePanel extends JPanel{
       }
 
 	private void onEndGame() {
-        String player = JOptionPane.showInputDialog(this, "Enter your name", "Player");
-        if (player == null || player.isBlank()) player = "Anonymous";
+        //String player = JOptionPane.showInputDialog(this, "Enter your name", "Player");
+        //if (player == null || player.isBlank()) player = "Anonymous";
       
-        ScoreManager.saveScore(player, score);
-        showLeaderboard();
+        //ScoreManager.saveScore(player, score);
+        //showLeaderboard();
       
         score = 0;
         scoreLabel.setText("Score: 0");
       }
 	
+	/*
 	private void showLeaderboard() {
         List lines = ScoreManager.loadScores();
           StringBuilder html = new StringBuilder(
@@ -58,5 +60,5 @@ public class GamePanel extends JPanel{
           "Top Scores",
           JOptionPane.PLAIN_MESSAGE
         );
-      }
+      } */
 }
