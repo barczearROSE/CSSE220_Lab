@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.List;
 import javax.swing.*;
 
-public class GamePanel {
+public class GamePanel extends JPanel{
 	private int score = 0;
 	private JLabel scoreLabel = new JLabel("Score: 0");
 	private JButton addPointButton = new JButton("Add Point");
