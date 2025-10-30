@@ -6,8 +6,13 @@ import java.awt.*;
 
 public class GameApp{
 
+<<<<<<< HEAD
 	private JFrame frame = new JFrame();
 	private LevelHandler panel = new LevelHandler();
+=======
+	private JFrame frame = new JFrame("Template");
+	private GamePanel panel = new GamePanel();
+>>>>>>> refs/remotes/origin/master
 	
 	//Constructs the main game window.
 	public  GameApp()
@@ -18,5 +23,10 @@ public class GameApp{
         frame.pack();                      // Fit to preferred component sizes
         frame.setLocationRelativeTo(null); // Center on screen
 		
+	}
+	
+	public void show() {
+		frame.setVisible(true);
+
 	}
 }
