@@ -38,7 +38,7 @@ public class GamePanel extends JPanel{
 	}
 	
 	
-	
+	/*
 	private JComponent buildControls()
 	{
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
@@ -52,6 +52,31 @@ public class GamePanel extends JPanel{
         
         
 		return 
+	} */
+	
+	/*
+	private void buildKeys() 
+	{
+		this.setFocusable(true);
+		this.requestFocusInWindow();
+		
+		this.addKeyListener(new KeyAdapter() {
+	        @Override
+	        public void keyPressed(KeyEvent e) {
+	            switch (e.getKeyCode()) {
+	                case KeyEvent.VK_LEFT -> canvas.moveDelta(-10);
+	                case KeyEvent.VK_RIGHT -> canvas.moveDelta(10);
+	                case KeyEvent.VK_UP -> canvas.moveUp
+	                case KeyEvent.VK_B -> {
+	                    int x = (int)(Math.random() * canvas.getWidth());
+	                    int y = (int)(Math.random() * canvas.getHeight());
+	                    canvas.addBall(x, y);
+	                }
+	            }
+	        }
+	    });
+		
 	}
+	*/
 	
 }
