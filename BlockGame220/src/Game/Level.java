@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
 import javax.swing.JComponent;
 
 public class Level extends JComponent{
@@ -30,6 +29,24 @@ public class Level extends JComponent{
           c.draw(g2); 
         } 
     }
+    
+    public void moveAll() {
+    	for (Collidable c : collidables) {
+    		c.move();
+    	}
+    	
+    }
+    
+    public void movePlayer(int velocityX) {
+    	player.setDX(velocityX);
+    	
+    }
+    
+    public void jumpPlayer(int velocityY) {
+    	player.setDY(velocityY);
+    }
+    
+    
     
     
     

@@ -23,7 +23,7 @@ public class LevelHandler extends JPanel{
 		   add(scoreLabel);
 		   
 		   timer = new Timer(30, e -> {
-	            canvas.repaint();
+	           canvas.repaint();
 	        });
 		  
 		}
