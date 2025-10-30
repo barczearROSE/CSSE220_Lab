@@ -7,9 +7,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 
 public class LevelHandler extends JPanel{
@@ -24,6 +21,10 @@ public class LevelHandler extends JPanel{
 		   setLayout(new FlowLayout());
 		   scoreLabel.setFont(scoreLabel.getFont().deriveFont(24f));
 		   add(scoreLabel);
+		   
+		   timer = new Timer(30, e -> {
+	            canvas.repaint();
+	        });
 		  
 		}
 	
@@ -57,7 +58,7 @@ private void buildKeys() {
 	                	canvas.movePlayer(10);
 	                	break;
 	                case KeyEvent.VK_UP:
-	                    
+	                	canvas.jumpPlayer();
 	                    break;
 	            }
 	        }
