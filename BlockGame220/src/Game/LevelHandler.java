@@ -58,7 +58,7 @@ private void buildKeys() {
 	                	canvas.movePlayer(10);
 	                	break;
 	                case KeyEvent.VK_UP:
-	                	canvas.jumpPlayer();
+	                	canvas.jumpPlayer(10);
 	                    break;
 	            }
 	        }
