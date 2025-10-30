@@ -11,21 +11,43 @@ import java.awt.event.KeyEvent;
 
 public class LevelHandler extends JPanel{
 	
+	private final HUDModel hudModel = new HUDModel();
+	private final HUDView hudView = new HUDView();
 	private static final long serialVersionUID = 1L;
 	private final Level canvas = new Level();
 	private int score = 0;
-	private JLabel scoreLabel = new JLabel("Score: 0");
+	
 	Timer timer;
 	
 	public LevelHandler() {
 		   setLayout(new FlowLayout());
-		   scoreLabel.setFont(scoreLabel.getFont().deriveFont(24f));
-		   add(scoreLabel);
+		   
 		   
 		   timer = new Timer(30, e -> {
+			    canvas.moveAll();
 	           canvas.repaint();
 	        });
 		  
+		   JPanel layered = new JPanel();
+		   layered.setLayout(new OverlayLayout(layered));
+		   layered.setOpaque(false);
+
+
+		   canvas.setOpaque(true);
+		   layered.add(canvas); 
+		   hudView.setOpaque(false);
+		   hudView.setAlignmentX(0f); // left
+		   hudView.setAlignmentY(0f); // top
+		   hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
+		   layered.add(hudView); // top
+
+
+		   add(layered, BorderLayout.CENTER);
+		   add(buildControls(), BorderLayout.SOUTH);
+
+
+		   // initial sync
+		   hudView.refresh(hudModel);
 		}
 	
 	
