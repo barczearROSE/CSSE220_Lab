@@ -12,14 +12,15 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 
-public class GamePanel extends JPanel{
+public class LevelHandler extends JPanel{
 	
-	private final GameComponent canvas = new GameComponent();
+	private static final long serialVersionUID = 1L;
+	private final Level canvas = new Level();
 	private int score = 0;
 	private JLabel scoreLabel = new JLabel("Score: 0");
 	Timer timer;
 	
-	public GamePanel() {
+	public LevelHandler() {
 		   setLayout(new FlowLayout());
 		   scoreLabel.setFont(scoreLabel.getFont().deriveFont(24f));
 		   add(scoreLabel);
@@ -28,35 +29,20 @@ public class GamePanel extends JPanel{
 	
 	
 	
-	@Override
-	protected void paintComponent(Graphics g)
-	{
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D)g;
-		
-		
-	}
-	
-	
-	/*
-	private JComponent buildControls()
-	{
+	private JComponent buildControls(){
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
-		
         JButton left = new JButton("Left");
         JButton right = new JButton("Right");
         JButton up = new JButton("Up");
         
-        left
-        
-        
-        
-		return 
-	} */
+        controls.add(left); 
+        controls.add(right);
+        controls.add(up);
+        return controls;
+	}
 	
-	/*
-	private void buildKeys() 
-	{
+private void buildKeys() {
+		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 		
@@ -64,19 +50,19 @@ public class GamePanel extends JPanel{
 	        @Override
 	        public void keyPressed(KeyEvent e) {
 	            switch (e.getKeyCode()) {
-	                case KeyEvent.VK_LEFT -> canvas.moveDelta(-10);
-	                case KeyEvent.VK_RIGHT -> canvas.moveDelta(10);
-	                case KeyEvent.VK_UP -> canvas.moveUp
-	                case KeyEvent.VK_B -> {
-	                    int x = (int)(Math.random() * canvas.getWidth());
-	                    int y = (int)(Math.random() * canvas.getHeight());
-	                    canvas.addBall(x, y);
-	                }
+	                case KeyEvent.VK_LEFT:
+	                	canvas.movePlayer(-10);
+	                	break;
+	                case KeyEvent.VK_RIGHT:
+	                	canvas.movePlayer(10);
+	                	break;
+	                case KeyEvent.VK_UP:
+	                    
+	                    break;
 	            }
 	        }
 	    });
 		
 	}
-	*/
 	
 }

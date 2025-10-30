@@ -7,7 +7,7 @@ import java.awt.*;
 public class GameApp{
 
 	private JFrame frame = new JFrame();
-	private GamePanel panel = new GamePanel();
+	private LevelHandler panel = new LevelHandler();
 	
 	//Constructs the main game window.
 	public  GameApp()
