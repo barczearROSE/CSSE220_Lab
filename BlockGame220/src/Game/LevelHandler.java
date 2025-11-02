@@ -20,34 +20,39 @@ public class LevelHandler extends JPanel{
 	Timer timer;
 	
 	public LevelHandler() {
-		   setLayout(new FlowLayout());
-		   
-		   
+		this.setLayout(new BorderLayout(8, 8));
+        this.add(canvas, BorderLayout.CENTER);
+        this.setBackground(canvas.BG);
+        this.add(buildControls(), BorderLayout.SOUTH);
+        this.buildKeys();
+//		   setLayout(new FlowLayout());
+//		   
+//		   
 		   timer = new Timer(30, e -> {
 			   canvas.moveAll();
 	           canvas.repaint();
 	        });
 		  
-		   JPanel layered = new JPanel();
-		   layered.setLayout(new OverlayLayout(layered));
-		   layered.setOpaque(false);
-
-
-		   canvas.setOpaque(true);
-		   layered.add(canvas); 
-		   hudView.setOpaque(false);
-		   hudView.setAlignmentX(0f); // left
-		   hudView.setAlignmentY(0f); // top
-		   hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
-		   layered.add(hudView); // top
-
-
-		   add(layered, BorderLayout.CENTER);
-		   add(buildControls(), BorderLayout.SOUTH);
-
-
-		   // initial sync
-		   hudView.refresh(hudModel);
+//		   JPanel layered = new JPanel();
+//		   layered.setLayout(new OverlayLayout(layered));
+//		   layered.setOpaque(false);
+//
+//
+//		   canvas.setOpaque(true);
+//		   layered.add(canvas); 
+//		   hudView.setOpaque(false);
+//		   hudView.setAlignmentX(0f); // left
+//		   hudView.setAlignmentY(0f); // top
+//		   hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
+//		   layered.add(hudView); // top
+//
+//
+//		   add(layered, BorderLayout.CENTER);
+//		   add(buildControls(), BorderLayout.SOUTH);
+//
+//
+//		   // initial sync
+//		   hudView.refresh(hudModel);
 		}
 	
 	

@@ -12,6 +12,8 @@ public class Collidable {
 	public Collidable(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
+		this.Vx = 0;
+		this.Vy = 0;
 	}
 	
 	public int getX() {
