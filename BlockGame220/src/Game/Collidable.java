@@ -4,10 +4,10 @@ import java.awt.Graphics2D;
 
 public class Collidable {
 	
-	private int X;
-	private int Y;
-	private int Vx;
-	private int Vy;
+	protected int X;
+	protected int Y;
+	protected int Vx;
+	protected int Vy;
 	
 	public Collidable(int X, int Y) {
 		this.X = X;
