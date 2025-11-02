@@ -44,15 +44,8 @@ public class Enemy extends Collidable {
 	@Override
 	public void draw(Graphics2D g2) {
         if (spriteLoaded) {   
-    	    g2.drawImage(sprite, X, Y, 10, 10, null);
-    	} else {
-    		super.draw(g2);
-    		Color temp = g2.getColor();
-    		g2.setColor(Color.RED);
-    		g2.drawRect(X, Y, X+10, Y+10);
-    		g2.fillRect(X, Y, X+10, Y+10);
-    		g2.setColor(temp);
-    		}
+    	    g2.drawImage(sprite, X, Y, 512, 384, null);
+    	}
 	}
 
 }
