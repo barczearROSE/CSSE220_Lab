@@ -19,7 +19,6 @@ public class Enemy extends Collidable {
 		super(X, Y);
 		this.maxDist = maxDist;
 		this.minDist = minDist;
-		this.speed = speed;
 		try {
             sprite = ImageIO.read(Enemy.class.getResource("emeny.png"));
             spriteLoaded = (sprite != null);
