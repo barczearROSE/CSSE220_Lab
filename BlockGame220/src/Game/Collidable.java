@@ -6,12 +6,12 @@ public class Collidable {
 	
 	private int X;
 	private int Y;
-	private int V;
+	private int Vx;
+	private int Vy;
 	
-	public Collidable(int X, int Y, int V) {
+	public Collidable(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
-		this.V = V;
 	}
 	
 	public int getX() {
@@ -21,11 +21,14 @@ public class Collidable {
 	public int getY() {
 		return Y;
 	};
-	//hello
-	public int getV() {
-		return V;
+
+	public int getVx() {
+		return Vx;
 	};
-	// oh no
+	
+	public int getVy() {
+		return Vy;
+	};
 	
 	public void setX(int X) {
 		this.X = X;
@@ -35,11 +38,14 @@ public class Collidable {
 		this.Y = Y;
 	};
 	
-	public void setV(int V) {
-		this.V = V;
+	public void setVx(int V) {
+		this.Vx = V;
 	};
-	//hello
-	//urhnd
+	
+	public void setVy(int V) {
+		this.Vy = V;
+	};
+
 	public void draw(Graphics2D g2) {
 		
 	}
