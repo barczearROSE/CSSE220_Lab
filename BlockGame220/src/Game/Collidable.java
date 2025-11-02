@@ -39,6 +39,7 @@ public class Collidable {
 		this.V = V;
 	};
 	//hello
+	//urhn
 	public void draw(Graphics2D g2) {
 		
 	}
