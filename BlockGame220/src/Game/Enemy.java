@@ -9,14 +9,13 @@ import javax.imageio.ImageIO;
 
 public class Enemy extends Collidable {
 
-	int reverse = 1;
 	private BufferedImage sprite;
 	private boolean spriteLoaded = false;
 	private int maxDist;
 	private int minDist;
-	private int speed;
+	private int speed = 10;
 	
-	public Enemy(int X, int Y, int maxDist, int minDist, int speed) {
+	public Enemy(int X, int Y, int maxDist, int minDist) {
 		super(X, Y);
 		this.maxDist = maxDist;
 		this.minDist = minDist;
@@ -31,20 +30,20 @@ public class Enemy extends Collidable {
 	
 	public void move() {
 		if (X + speed >= maxDist || X - speed <= minDist) {
-			if (reverse > 0) {
-				this.X = maxDist;
-			} else if (reverse < 0) {
-				this.X = minDist;
-			};
-			reverse = reverse * -1;
+//			if (reverse < 0) {
+//				this.X = maxDist;
+//			} else if (reverse > 0) {
+//				this.X = minDist;
+//			};
+			speed = speed * -1;
 		};
-		this.X += speed * reverse;
+		this.X += speed;
 	};
 	
 	@Override
 	public void draw(Graphics2D g2) {
         if (spriteLoaded) {   
-    	    g2.drawImage(sprite, X, Y, 512, 384, null);
+    	    g2.drawImage(sprite, X, Y, 10, 10, null);
     	}
 	}
 
