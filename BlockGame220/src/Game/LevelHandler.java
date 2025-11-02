@@ -32,6 +32,7 @@ public class LevelHandler extends JPanel{
 			   canvas.moveAll();
 	           canvas.repaint();
 	        });
+		   timer.start();
 		  
 //		   JPanel layered = new JPanel();
 //		   layered.setLayout(new OverlayLayout(layered));

@@ -12,10 +12,8 @@ public class Player extends Collidable {
 	}
 		@Override
 		public void move(){
-			this.X+=10;
 			this.X += this.Vx;
 			this.Y += this.Vy;
-			System.out.println("HELLO");
 			
 		}
 		
@@ -24,9 +22,8 @@ public class Player extends Collidable {
 			super.draw(g2);
 			Color temp = g2.getColor();
 			g2.setColor(Color.RED);
-			Rectangle r = new Rectangle(X,Y,X+10,Y+10);
-			g2.draw(r);
-			g2.fill(r);
+			g2.drawRect(X, Y, X+10, Y+10);
+			g2.fillRect(X, Y, X+10, Y+10);
 			g2.setColor(temp);
 		}
 }

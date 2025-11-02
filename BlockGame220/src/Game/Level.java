@@ -12,7 +12,7 @@ public class Level extends JComponent{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
-	public static final Color BG = Color.BLUE;
+	public final Color BG = Color.BLUE;
 	private Player player = new Player(10,10);
 	private ArrayList<Collidable> collidables = new ArrayList<Collidable>();
 	
@@ -40,7 +40,7 @@ public class Level extends JComponent{
     	
     }
     
-    public void repaint() {
+    public void rePaint() {
     	repaint();
     }
     
@@ -59,5 +59,4 @@ public class Level extends JComponent{
     
 	
 
-	
 }
