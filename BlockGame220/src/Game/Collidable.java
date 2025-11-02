@@ -45,6 +45,10 @@ public class Collidable {
 	public void setVy(int V) {
 		this.Vy = V;
 	};
+	
+	public void move() {
+		
+	};
 
 	public void draw(Graphics2D g2) {
 		
