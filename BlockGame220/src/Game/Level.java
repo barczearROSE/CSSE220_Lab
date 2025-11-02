@@ -27,10 +27,9 @@ public class Level extends JComponent{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        player.draw(g2);
-//        for (Collidable c : collidables) {
-//          c.draw(g2); 
-//        } 
+        for (Collidable c : collidables) {
+          c.draw(g2); 
+        } 
     }
     
     public void moveAll() {
@@ -45,12 +44,12 @@ public class Level extends JComponent{
     }
     
     public void movePlayer(int velocityX) {
-    	player.setVx(player.getVx() + velocityX);
+    	player.setVx(velocityX);
     	
     }
     
     public void jumpPlayer(int velocityY) {
-    	player.setVy(player.getVy() + velocityY);
+    	player.setVy(velocityY);
     }
     
     

@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 public class LevelHandler extends JPanel{
@@ -79,6 +80,10 @@ private void buildKeys() {
 	        @Override
 	        public void keyPressed(KeyEvent e) {
 	            switch (e.getKeyCode()) {
+		            case KeyEvent.KEY_RELEASED:
+	                	canvas.movePlayer(0);
+	                	canvas.jumpPlayer(01);
+	                	break;
 	                case KeyEvent.VK_LEFT:
 	                	canvas.movePlayer(-10);
 	                	break;
@@ -86,12 +91,43 @@ private void buildKeys() {
 	                	canvas.movePlayer(10);
 	                	break;
 	                case KeyEvent.VK_UP:
-	                	canvas.jumpPlayer(10);
+	                	canvas.jumpPlayer(-10);
 	                    break;
+	                default:
+	                	canvas.movePlayer(0);
+	                	canvas.jumpPlayer(01);
+	                	break;
+	                
 	            }
+	        }
+	        public void keyReleased(KeyEvent e) {
+	        	switch (e.getKeyCode()) {
+	            case KeyEvent.KEY_RELEASED:
+                	canvas.movePlayer(0);
+                	canvas.jumpPlayer(01);
+                	break;
+                case KeyEvent.VK_LEFT:
+                	canvas.movePlayer(0);
+                	canvas.jumpPlayer(01);
+                	break;
+                case KeyEvent.VK_RIGHT:
+                	canvas.movePlayer(0);
+                	canvas.jumpPlayer(01);
+                	break;
+                case KeyEvent.VK_UP:
+                	canvas.movePlayer(0);
+                	canvas.jumpPlayer(01);
+                    break;
+                default:
+                	canvas.movePlayer(0);
+                	canvas.jumpPlayer(01);
+                	break;
+                
+            }
 	        }
 	    });
 		
 	}
 	
 }
+
