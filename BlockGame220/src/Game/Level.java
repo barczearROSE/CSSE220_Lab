@@ -16,12 +16,14 @@ public class Level extends JComponent{
 	private Player player = new Player(10,10);
 	private Platform bottom = new Platform(0,768-10);
 	private ArrayList<Collidable> collidables = new ArrayList<Collidable>();
+	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
 	
 	
 	public Level() {
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		collidables.add(player);
 		collidables.add(bottom);
+		collidables.add(enemy1);
 		
 	}
 	
