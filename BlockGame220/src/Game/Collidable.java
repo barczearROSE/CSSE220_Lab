@@ -25,7 +25,6 @@ public class Collidable {
 	public int getV() {
 		return V;
 	};
-	// oh no
 	
 	public void setX(int X) {
 		this.X = X;
