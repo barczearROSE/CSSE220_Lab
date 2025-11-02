@@ -28,14 +28,23 @@ public class Enemy extends Collidable {
 	}
 	
 	public void move() {
-		if (X + speed >= maxDist || X - speed <= minDist) {
-//			if (reverse < 0) {
-//				this.X = maxDist;
-//			} else if (reverse > 0) {
-//				this.X = minDist;
-//			};
+		if(this.X + this.speed >= this.maxDist ) {
 			speed = speed * -1;
-		};
+			this.X = this.maxDist - 1;
+			
+		}
+		if( X - speed <= minDist) {
+			speed = speed * -1;
+			this.X = this.minDist + 1;
+		}
+//		if (X + speed >= maxDist || X - speed <= minDist) {
+////			if (reverse < 0) {
+////				this.X = maxDist;
+////			} else if (reverse > 0) {
+////				this.X = minDist;
+////			};
+//			speed = speed * -1;
+//		};
 		this.X += speed;
 	};
 	
