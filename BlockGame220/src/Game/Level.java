@@ -12,14 +12,16 @@ public class Level extends JComponent{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
-	public final Color BG = Color.BLUE;
+	public final Color BG = Color.WHITE;
 	private Player player = new Player(10,10);
+	private Platform bottom = new Platform(0,768-10);
 	private ArrayList<Collidable> collidables = new ArrayList<Collidable>();
 	
 	
 	public Level() {
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		collidables.add(player);
+		collidables.add(bottom);
 		
 	}
 	
@@ -36,7 +38,12 @@ public class Level extends JComponent{
     	for (Collidable c : collidables) {
     		c.move();
     	}
-    	
+    }
+    public void collide() {
+    	if(player.boundingBox.intersects(bottom.boundingBox)) {
+    		player.setY(bottom.getY() - player.boundingBox.height);
+    	}
+    	System.out.println(player.getX() + " " + player.getY());
     }
     
     public void rePaint() {

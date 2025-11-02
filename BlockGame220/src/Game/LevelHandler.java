@@ -31,6 +31,7 @@ public class LevelHandler extends JPanel{
 //		   
 		   timer = new Timer(30, e -> {
 			   canvas.moveAll();
+			   canvas.collide();
 	           canvas.repaint();
 	        });
 		   timer.start();
