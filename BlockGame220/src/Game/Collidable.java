@@ -68,6 +68,10 @@ public class Collidable {
 	public void move() {
 		
 	};
+	
+	public void collide(Collidable newObject) {
+		
+	};
 
 	public void draw(Graphics2D g2) {
 		
