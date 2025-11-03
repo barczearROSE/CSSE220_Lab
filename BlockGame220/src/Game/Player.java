@@ -14,7 +14,9 @@ import javax.imageio.ImageIO;
 
 public class Player extends Collidable {
     private BufferedImage sprite; //new
+    private BufferedImage moveSprite;
     private boolean spriteLoaded = false;//new
+    private boolean buffSpriteLoaded = false;
 
 
 		public Player(int X, int Y) {
@@ -22,8 +24,11 @@ public class Player extends Collidable {
 	        try {
 	            sprite = ImageIO.read(Player.class.getResource("playah.png"));
 	            spriteLoaded = (sprite != null);
+	            moveSprite = ImageIO.read(Player.class.getResource("PLAYAHMOVING.png"));
+	            buffSpriteLoaded = (moveSprite != null);
 	        } catch (IOException | IllegalArgumentException ex) {
 	            spriteLoaded = false; // fallback to oval
+	            buffSpriteLoaded = false;
 	        }
 		
 	}
@@ -37,14 +42,16 @@ public class Player extends Collidable {
 		
 		@Override
 		public void draw(Graphics2D g2) {
-	        if (spriteLoaded) {   // new
+			if (buffSpriteLoaded & this.Vx !=0){
+	    		g2.drawImage(moveSprite, X, Y, 50,50, null);
+			}else if (spriteLoaded) {   // new
 	    	    g2.drawImage(sprite, X, Y, 50, 50, null);
-	    	} else {
+	    	}else{
 			super.draw(g2);
 			Color temp = g2.getColor();
 			g2.setColor(Color.RED);
-			g2.drawRect(X, Y, X+50, Y+50);
-			g2.fillRect(X, Y, X+50, Y+50);
+			g2.draw(this.boundingBox);
+			g2.fill(this.boundingBox);
 			g2.setColor(temp);
 	    	}
 		}

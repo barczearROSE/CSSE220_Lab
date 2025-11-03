@@ -48,16 +48,20 @@ public class Level extends JComponent{
     		c.move();
     	}
     }
+    
     public void collide() {
+    	for(Collidable c : collidables) {
+    		for(Collidable k : collidables) {
+    			if(c!=k) {
+    				c.collide(k);
+    			}
+    		}
+    	}
     	if(player.boundingBox.intersects(bottom.boundingBox)) {
     		player.setY(bottom.getY() - player.boundingBox.height);
     	}
-    	System.out.println(player.getX() + " " + player.getY());
     }
-    
-    public void rePaint() {
-    	repaint();
-    }
+
     
     public void movePlayer(int velocityX) {
     	player.setVx(velocityX);
