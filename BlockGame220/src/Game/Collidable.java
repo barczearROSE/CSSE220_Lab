@@ -1,6 +1,13 @@
 package Game;
+/**
+ * Base class for all objects that can move and collide in the game.
+ *
+ * Keeps track of position, velocity, and collision bounds.
+ * Extended classes also handle how the object moves and is drawn.
+ */
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 public class Collidable {
 	
@@ -8,12 +15,22 @@ public class Collidable {
 	protected int Y;
 	protected int Vx;
 	protected int Vy;
+    public Rectangle boundingBox;
 	
 	public Collidable(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
 		this.Vx = 0;
 		this.Vy = 0;
+		this.boundingBox = new Rectangle(this.X,this.Y,10,10);
+	}
+	
+	public Collidable(int X, int Y, int width, int height) {
+		this.X = X;
+		this.Y = Y;
+		this.Vx = 0;
+		this.Vy = 0;
+		this.boundingBox = new Rectangle(this.X,this.Y,width,height);
 	}
 	
 	public int getX() {

@@ -1,4 +1,10 @@
 package Game;
+/**
+ * Sets up the main game window and display.
+ *
+ * This class creates the game frame, adds the LevelHandler panel,
+ * and shows the game when started.
+ */
 
 import javax.swing.JFrame;
 import javax.swing.*;

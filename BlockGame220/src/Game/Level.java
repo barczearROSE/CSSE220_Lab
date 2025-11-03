@@ -1,4 +1,11 @@
 package Game;
+/**
+ * Represents a single level of the game.
+ *
+ * This class manages the player, platforms, enemies, and 
+ * collectible objects. It handles drawing, movement, and simple
+ * collision logic.
+ */
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,14 +19,18 @@ public class Level extends JComponent{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
-	public final Color BG = Color.BLUE;
+	public final Color BG = Color.WHITE;
 	private Player player = new Player(10,10);
+	private Platform bottom = new Platform(0,768-10);
 	private ArrayList<Collidable> collidables = new ArrayList<Collidable>();
+	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
 	
 	
 	public Level() {
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		collidables.add(player);
+		collidables.add(bottom);
+		collidables.add(enemy1);
 		
 	}
 	
@@ -36,7 +47,12 @@ public class Level extends JComponent{
     	for (Collidable c : collidables) {
     		c.move();
     	}
-    	
+    }
+    public void collide() {
+    	if(player.boundingBox.intersects(bottom.boundingBox)) {
+    		player.setY(bottom.getY() - player.boundingBox.height);
+    	}
+    	System.out.println(player.getX() + " " + player.getY());
     }
     
     public void rePaint() {
