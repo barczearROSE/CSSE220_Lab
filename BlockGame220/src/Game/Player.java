@@ -28,7 +28,7 @@ public class Player extends Collidable {
 	        try {
 	            sprite = ImageIO.read(Player.class.getResource("playah.png"));
 	            spriteLoaded = (sprite != null);
-	            moveSprite = ImageIO.read(Player.class.getResource("PLAYAHMOVING.png"));
+	            moveSprite = ImageIO.read(Player.class.getResource("dagbo.png"));
 	            buffSpriteLoaded = (moveSprite != null);
 	        } catch (IOException | IllegalArgumentException ex) {
 	            spriteLoaded = false; // fallback to oval
