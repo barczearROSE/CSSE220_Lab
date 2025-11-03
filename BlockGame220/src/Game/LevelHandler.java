@@ -41,26 +41,26 @@ public class LevelHandler extends JPanel{
 	        });
 		   timer.start();
 		  
-//		   JPanel layered = new JPanel();
-//		   layered.setLayout(new OverlayLayout(layered));
-//		   layered.setOpaque(false);
-//
-//
-//		   canvas.setOpaque(true);
-//		   layered.add(canvas); 
-//		   hudView.setOpaque(false);
-//		   hudView.setAlignmentX(0f); // left
-//		   hudView.setAlignmentY(0f); // top
-//		   hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
-//		   layered.add(hudView); // top
-//
-//
-//		   add(layered, BorderLayout.CENTER);
-//		   add(buildControls(), BorderLayout.SOUTH);
-//
-//
-//		   // initial sync
-//		   hudView.refresh(hudModel);
+		   JPanel layered = new JPanel();
+		   layered.setLayout(new OverlayLayout(layered));
+		   layered.setOpaque(false);
+
+
+		   canvas.setOpaque(true);
+		   layered.add(canvas); 
+		   hudView.setOpaque(false);
+		   hudView.setAlignmentX(0f); // left
+		   hudView.setAlignmentY(0f); // top
+		   hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
+		   layered.add(hudView); // top
+
+
+		   add(layered, BorderLayout.CENTER);
+		   
+
+
+		   // initial sync
+		   hudView.refresh(hudModel);
 		}
 	
 	
