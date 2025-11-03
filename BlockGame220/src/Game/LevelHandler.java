@@ -23,7 +23,7 @@ public class LevelHandler extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private final Level canvas = new Level();
 	private int score = 0;
-	private int lives = 3;
+	JLabel gameOverScreen = new JLabel("Game Over!");
 	
 	Timer timer;
 	
@@ -34,7 +34,7 @@ public class LevelHandler extends JPanel{
         this.buildKeys();
         
         JLabel scoreLabel = new JLabel("Score: " + score);
-        JLabel lifeLabel = new JLabel("Lives: " + lives);
+        JLabel lifeLabel = new JLabel("Lives: " + canvas.player.getLives());
         Font hudFont = new Font("Serif", Font.PLAIN, 24);
         
 		scoreLabel.setBounds(50,50,200,30);
@@ -55,6 +55,12 @@ public class LevelHandler extends JPanel{
 			   canvas.collide();
 	           canvas.repaint();
 	           //layered.repaint();
+	           
+	           if(canvas.player.getLives() <= 0)
+	           {
+	        	   gameOver();
+	        	   timer.stop();
+	           }
 	        });
 		   timer.start();
 		  
@@ -151,6 +157,11 @@ private void buildKeys() {
 
 private void gameOver()
 {
+	
+	gameOverScreen.setBounds(250, 250, 1000, 200);
+	Font gameOverFont = new Font("Serif", Font.BOLD, 100);
+	gameOverScreen.setFont(gameOverFont);
+	canvas.add(gameOverScreen);
 	
 	
 }
