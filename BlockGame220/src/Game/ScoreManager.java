@@ -3,7 +3,7 @@ package Game;
  * Manages saving and loading player scores.
  *
  * Scores are stored in a text file. This class provides methods
- * to save a new score and load all saved scores.
+ * to save a new score and load all saved scores. 
  */
 
 import java.awt.*;
