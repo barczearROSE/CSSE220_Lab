@@ -30,7 +30,6 @@ public class LevelHandler extends JPanel{
 		this.setLayout(new BorderLayout(8, 8));
         this.add(canvas, BorderLayout.CENTER);
         this.setBackground(canvas.BG);
-        this.add(buildControls(), BorderLayout.SOUTH);
         this.buildKeys();
 //		   setLayout(new FlowLayout());
 //		   
@@ -66,17 +65,17 @@ public class LevelHandler extends JPanel{
 	
 	
 	
-	private JComponent buildControls(){
-		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
-        JButton left = new JButton("Left");
-        JButton right = new JButton("Right");
-        JButton up = new JButton("Up");
-        
-        controls.add(left); 
-        controls.add(right);
-        controls.add(up);
-        return controls;
-	}
+//	private JComponent buildControls(){
+//		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
+//        JButton left = new JButton("Left");
+//        JButton right = new JButton("Right");
+//        JButton up = new JButton("Up");
+//        
+//        controls.add(left); 
+//        controls.add(right);
+//        controls.add(up);
+//        return controls;
+//	}
 	
 private void buildKeys() {
 		
