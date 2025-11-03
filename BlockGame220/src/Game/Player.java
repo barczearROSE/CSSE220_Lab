@@ -8,6 +8,7 @@ package Game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -17,10 +18,12 @@ public class Player extends Collidable {
     private BufferedImage moveSprite;
     private boolean spriteLoaded = false;//new
     private boolean buffSpriteLoaded = false;
+    private int lives;
 
 
 		public Player(int X, int Y) {
 			super(X,Y);
+			this.lives  = 3;
 	        try {
 	            sprite = ImageIO.read(Player.class.getResource("playah.png"));
 	            spriteLoaded = (sprite != null);
@@ -37,8 +40,26 @@ public class Player extends Collidable {
 			this.X += this.Vx;
 			this.Y += this.Vy;
 			this.boundingBox.setBounds(X, Y, 50, 50);
-			
 		}
+		
+		@Override
+		public boolean collide(Collidable c) {
+			if(super.collide(c)) {
+				if(c instanceof Platform) {
+					if(c.boundingBox.contains(this.X + this.boundingBox.width/2,this.Y)) { // head collision
+						this.setY(c.getY() + c.boundingBox.height);
+					}else if(c.boundingBox.contains(this.X + this.boundingBox.width/2,this.Y + this.boundingBox.height)) { // foot collision
+						this.setY(c.getY() - this.boundingBox.height);
+					}
+				}else if(c instanceof Enemy) {
+					this.lives--;
+				}else if(c instanceof Collectible) {
+					
+				}
+			}
+			return super.collide(c);
+		}
+		
 		
 		@Override
 		public void draw(Graphics2D g2) {
@@ -54,5 +75,12 @@ public class Player extends Collidable {
 			g2.fill(this.boundingBox);
 			g2.setColor(temp);
 	    	}
+		}
+		
+		public int getLives() {
+			return this.lives;
+		}
+		public void setLives(int i) {
+			this.lives = i;
 		}
 }
