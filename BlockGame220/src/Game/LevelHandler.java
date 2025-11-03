@@ -23,6 +23,7 @@ public class LevelHandler extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private final Level canvas = new Level();
 	private int score = 0;
+	private int lives = 3;
 	
 	Timer timer;
 	
@@ -31,20 +32,33 @@ public class LevelHandler extends JPanel{
         this.add(canvas, BorderLayout.CENTER);
         this.setBackground(canvas.BG);
         this.buildKeys();
+        
+        JLabel scoreLabel = new JLabel("Score: " + score);
+        JLabel lifeLabel = new JLabel("Lives: " + lives);
+        Font hudFont = new Font("Serif", Font.PLAIN, 24);
+        
+		scoreLabel.setBounds(50,50,200,30);
+		lifeLabel.setBounds(50,30,200,30);
+		
+		scoreLabel.setFont(hudFont);
+		lifeLabel.setFont(hudFont);
+		
+		canvas.add(scoreLabel);
+		canvas.add(lifeLabel);
         JPanel layered = new JPanel();
-		 layered.setLayout(new OverlayLayout(layered));
-		   layered.setOpaque(false);
+		layered.setLayout(new OverlayLayout(layered));
+		layered.setOpaque(false);
 //		   
 //		   
 		   timer = new Timer(30, e -> {
 			   canvas.moveAll();
 			   canvas.collide();
 	           canvas.repaint();
-	           layered.repaint();
+	           //layered.repaint();
 	        });
 		   timer.start();
 		  
-		  
+		 /* 
 
 
 		   canvas.setOpaque(true);
@@ -58,10 +72,12 @@ public class LevelHandler extends JPanel{
 
 		   add(layered, BorderLayout.CENTER);
 		   
-
+ */
 
 		   // initial sync
-		   hudView.refresh(hudModel);
+		   //hudView.refresh(hudModel);
+		   
+		   
 		}
 	
 	
@@ -131,6 +147,13 @@ private void buildKeys() {
 	    });
 		
 	}
+
+
+private void gameOver()
+{
+	
+	
+}
 	
 }
 
