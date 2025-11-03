@@ -25,6 +25,7 @@ public class Level extends JComponent{
 	private Platform other = new Platform(100,500,200,50);
 	private ArrayList<Collidable> collidables = new ArrayList<Collidable>();
 	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
+	private Collectible col1 = new Collectible(300, 200);
 	
 	
 	public Level() {
@@ -33,6 +34,7 @@ public class Level extends JComponent{
 		collidables.add(bottom);
 		collidables.add(enemy1);
 		collidables.add(other);
+		collidables.add(col1);
 		
 	}
 	
