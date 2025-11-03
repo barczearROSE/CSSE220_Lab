@@ -69,8 +69,8 @@ public class Collidable {
 		
 	};
 	
-	public void collide(Collidable newObject) {
-		
+	public boolean collide(Collidable newObject) {
+		return this.boundingBox.intersects(newObject.boundingBox);
 	};
 
 	public void draw(Graphics2D g2) {
