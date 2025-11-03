@@ -31,19 +31,20 @@ public class LevelHandler extends JPanel{
         this.add(canvas, BorderLayout.CENTER);
         this.setBackground(canvas.BG);
         this.buildKeys();
-//		   setLayout(new FlowLayout());
+        JPanel layered = new JPanel();
+		 layered.setLayout(new OverlayLayout(layered));
+		   layered.setOpaque(false);
 //		   
 //		   
 		   timer = new Timer(30, e -> {
 			   canvas.moveAll();
 			   canvas.collide();
 	           canvas.repaint();
+	           layered.repaint();
 	        });
 		   timer.start();
 		  
-		   JPanel layered = new JPanel();
-		   layered.setLayout(new OverlayLayout(layered));
-		   layered.setOpaque(false);
+		  
 
 
 		   canvas.setOpaque(true);
