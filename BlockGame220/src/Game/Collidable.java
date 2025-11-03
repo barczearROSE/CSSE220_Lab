@@ -1,4 +1,10 @@
 package Game;
+/**
+ * Base class for all objects that can move and collide in the game.
+ *
+ * Keeps track of position, velocity, and collision bounds.
+ * Extended classes also handle how the object moves and is drawn.
+ */
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;

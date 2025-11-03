@@ -1,4 +1,9 @@
 package Game;
+/**
+ * Keeps track of the player's score.
+ *
+ * Provides methods to get the current score and increment it.
+ */
 
 public class HUDModel {
 	

@@ -1,4 +1,7 @@
 package Game;
+/**
+ * Represents a collectible item in the game.
+ */
 
 public class Collectible extends Collidable {
 

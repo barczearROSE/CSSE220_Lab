@@ -1,4 +1,7 @@
 package Game;
+/**
+ * Represents a solid platform in the game.
+ */
 
 import java.awt.Color;
 import java.awt.Graphics2D;

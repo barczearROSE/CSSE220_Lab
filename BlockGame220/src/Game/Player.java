@@ -1,4 +1,10 @@
 package Game;
+/**
+ * Represents the player character.
+ *
+ * Handles movement, collision bounds, and drawing the player
+ * on the screen.
+ */
 
 import java.awt.Color;
 import java.awt.Graphics2D;

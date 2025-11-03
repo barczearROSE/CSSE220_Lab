@@ -1,4 +1,11 @@
 package Game;
+/**
+ * Represents a single level of the game.
+ *
+ * This class manages the player, platforms, enemies, and 
+ * collectible objects. It handles drawing, movement, and simple
+ * collision logic.
+ */
 
 import java.awt.Color;
 import java.awt.Dimension;

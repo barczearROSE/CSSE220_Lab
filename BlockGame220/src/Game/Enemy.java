@@ -1,4 +1,9 @@
 package Game;
+/**
+ * Represents an enemy character in the game.
+ *
+ * Moves horizontally between a minimum and maximum distance.
+ */
 
 import java.awt.Color;
 import java.awt.Graphics2D;

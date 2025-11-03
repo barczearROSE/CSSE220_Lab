@@ -1,4 +1,11 @@
 package Game;
+/**
+ * Handles the game level, HUD, and player input.
+ *
+ * This class sets up the Level canvas, HUD display, control buttons,
+ * and keyboard controls. It also runs the game loop via a timer to
+ * update movement, collisions, and repainting.
+ */
 
 import java.awt.*;
 import java.util.List;
