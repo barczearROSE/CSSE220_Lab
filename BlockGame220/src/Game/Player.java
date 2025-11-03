@@ -9,6 +9,7 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -46,9 +47,9 @@ public class Player extends Collidable {
 		public boolean collide(Collidable c) {
 			if(super.collide(c)) {
 				if(c instanceof Platform) {
-					if(c.boundingBox.contains(this.X + this.boundingBox.width/2,this.Y)) { // head collision
+					if(c.boundingBox.intersects(new Rectangle(this.X+1,this.Y,this.boundingBox.width-1,1))) { // head collision
 						this.setY(c.getY() + c.boundingBox.height);
-					}else if(c.boundingBox.contains(this.X + this.boundingBox.width/2,this.Y + this.boundingBox.height)) { // foot collision
+					}else if(c.boundingBox.intersects(new Rectangle(this.X+1,this.Y + this.boundingBox.height,this.boundingBox.width-1,1))) { // foot collision
 						this.setY(c.getY() - this.boundingBox.height);
 					}
 				}else if(c instanceof Enemy) {
