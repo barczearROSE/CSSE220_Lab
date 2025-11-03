@@ -26,7 +26,7 @@ public class Player extends Collidable {
 			super(X,Y);
 			this.lives  = 3;
 	        try {
-	            sprite = ImageIO.read(Player.class.getResource("playah.png"));
+	            sprite = ImageIO.read(Player.class.getResource("dagobo.png"));
 	            spriteLoaded = (sprite != null);
 	            moveSprite = ImageIO.read(Player.class.getResource("PLAYAHMOVING.png"));
 	            buffSpriteLoaded = (moveSprite != null);
