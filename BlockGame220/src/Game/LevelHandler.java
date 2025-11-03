@@ -24,6 +24,7 @@ public class LevelHandler extends JPanel{
 	private final Level canvas = new Level();
 	private int score = 0;
 	private int lives = 3;
+	JLabel gameOverScreen = new JLabel("Game Over!");
 	
 	Timer timer;
 	
@@ -55,6 +56,12 @@ public class LevelHandler extends JPanel{
 			   canvas.collide();
 	           canvas.repaint();
 	           //layered.repaint();
+	           
+	           if(lives <= 0)
+	           {
+	        	   gameOver();
+	        	   timer.stop();
+	           }
 	        });
 		   timer.start();
 		  
@@ -151,6 +158,11 @@ private void buildKeys() {
 
 private void gameOver()
 {
+	
+	gameOverScreen.setBounds(250, 250, 1000, 200);
+	Font gameOverFont = new Font("Serif", Font.BOLD, 100);
+	gameOverScreen.setFont(gameOverFont);
+	canvas.add(gameOverScreen);
 	
 	
 }
