@@ -8,9 +8,8 @@ import java.awt.Graphics2D;
 
 public class Platform extends Collidable {
 
-	public Platform(int X, int Y) {
-		super(X, Y);
-		this.boundingBox.setBounds(this.X,this.Y,this.X+1024,this.Y+10);
+	public Platform(int X, int Y, int width, int height) {
+		super(X,Y,width,height);
 	}
 	
 	@Override

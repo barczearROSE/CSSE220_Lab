@@ -21,7 +21,8 @@ public class Level extends JComponent{
 	public static final int HEIGHT = 768;
 	public final Color BG = Color.WHITE;
 	private Player player = new Player(10,10);
-	private Platform bottom = new Platform(0,768-10);
+	private Platform bottom = new Platform(0,768-10,1024,10);
+	private Platform other = new Platform(100,500,200,50);
 	private ArrayList<Collidable> collidables = new ArrayList<Collidable>();
 	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
 	
@@ -31,6 +32,7 @@ public class Level extends JComponent{
 		collidables.add(player);
 		collidables.add(bottom);
 		collidables.add(enemy1);
+		collidables.add(other);
 		
 	}
 	
@@ -57,9 +59,9 @@ public class Level extends JComponent{
     			}
     		}
     	}
-    	if(player.boundingBox.intersects(bottom.boundingBox)) {
-    		player.setY(bottom.getY() - player.boundingBox.height);
-    	}
+//    	if(player.boundingBox.intersects(bottom.boundingBox)) {
+//    		player.setY(bottom.getY() - player.boundingBox.height);
+//    	}
     }
 
     
