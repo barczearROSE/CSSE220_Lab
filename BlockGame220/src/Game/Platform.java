@@ -17,8 +17,8 @@ public class Platform extends Collidable {
 	public void draw(Graphics2D g2) {
 		Color temp = g2.getColor();
 		g2.setColor(Color.BLACK);
-		g2.drawRect(X, Y, X+1024, Y+10);
-		g2.fillRect(X, Y, X+1024, Y+10);
+		g2.draw(this.boundingBox);
+		g2.fill(this.boundingBox);
 		g2.setColor(temp);
 	}
 
