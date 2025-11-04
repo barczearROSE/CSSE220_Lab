@@ -35,7 +35,6 @@ public class Level extends JComponent{
 		collidables.add(enemy1);
 		collidables.add(other);
 		collidables.add(col1);
-		
 	}
 	//push
 	
@@ -75,6 +74,25 @@ public class Level extends JComponent{
     
     public void jumpPlayer(int velocityY) {
     	player.setVy(velocityY);
+    }
+    
+    public void collect() {
+    	player.setCollect(true);
+    	collide();
+    	player.setCollect(false);
+    }
+    
+    public void checkBounds() {
+    	if(player.getX()>=WIDTH) {
+    		player.setX(0);
+    	}else if(player.getX() < 0) {
+    		player.setX(WIDTH);
+    	}
+    	if(player.getY()>=HEIGHT) {
+    		player.setY(0);
+    	}else if(player.getY() < 0) {
+    		player.setY(HEIGHT);
+    	}
     }
     
     

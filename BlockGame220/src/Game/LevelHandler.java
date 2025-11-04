@@ -52,6 +52,7 @@ public class LevelHandler extends JPanel{
 //		   
 		   timer = new Timer(30, e -> {
 			   canvas.moveAll();
+			   canvas.checkBounds();
 			   canvas.collide();
 	           canvas.repaint();
 	           //layered.repaint();
@@ -118,6 +119,9 @@ private void buildKeys() {
 	                case KeyEvent.VK_UP:
 	                	canvas.jumpPlayer(-10);
 	                    break;
+	                case KeyEvent.VK_DOWN:
+	                	canvas.collect();
+	                	break;
 	                default:
 	                	canvas.movePlayer(0);
 	                	canvas.jumpPlayer(01);
@@ -143,6 +147,9 @@ private void buildKeys() {
                 	canvas.movePlayer(0);
                 	canvas.jumpPlayer(01);
                     break;
+                case KeyEvent.VK_DOWN:
+                	canvas.movePlayer(0);
+                	canvas.jumpPlayer(01);
                 default:
                 	canvas.movePlayer(0);
                 	canvas.jumpPlayer(01);
