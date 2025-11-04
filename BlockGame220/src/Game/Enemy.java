@@ -51,7 +51,7 @@ public class Enemy extends Collidable {
 //			speed = speed * -1;
 //		};
 		this.X += speed;
-		this.boundingBox.setBounds(X, Y, 50, 50);
+		this.boundingBox.setBounds(X, Y, 10, 10);
 	};
 	
 	@Override
