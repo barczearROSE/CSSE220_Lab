@@ -20,6 +20,7 @@ public class Player extends Collidable {
     private boolean spriteLoaded = false;//new
     private boolean buffSpriteLoaded = false;
     private int lives;
+    private int score;
     private Rectangle head = new Rectangle(this.X+5,this.Y,this.boundingBox.width-5,1);
     private Rectangle feet = new Rectangle(this.X+5,this.Y + this.boundingBox.height,this.boundingBox.width-5,1);
     private Rectangle left = new Rectangle(this.X,this.Y+5,1,this.boundingBox.height-5);
@@ -73,7 +74,8 @@ public class Player extends Collidable {
 					this.X = startX;
 					this.Y = startY;
 				}else if(c instanceof Collectible) {
-					
+					this.score++;
+					((Collectible) c).setCollected(true);
 				}
 			}
 			return super.collide(c);
@@ -117,5 +119,11 @@ public class Player extends Collidable {
 		}
 		public void setLives(int i) {
 			this.lives = i;
+		}
+		public int getScore() {
+			return this.score;
+		}
+		public void setScore(int i) {
+			this.score = i;
 		}
 }

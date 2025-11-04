@@ -28,9 +28,13 @@ public class Collectible extends Collidable {
 	
 	@Override
 	public void draw(Graphics2D g2) {
-        if (spriteLoaded & collected == false) {   
+        if (spriteLoaded == true & collected == false) {
     	    g2.drawImage(sprite, X, Y, 50, 50, null);
     	}
+	}
+	
+	public void setCollected(boolean b) {
+		this.collected = b;
 	}
 	
 	
