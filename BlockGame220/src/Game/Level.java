@@ -31,30 +31,13 @@ public class Level extends JComponent{
 	
 	
 	public Level() {
-<<<<<<< HEAD
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		collidables.add(player);
 		collidables.add(bottom);
 		collidables.add(enemy1);
 		collidables.add(other);
 		collidables.add(col1);
-=======
-		
-		
-	
-			setPreferredSize(new Dimension(WIDTH,HEIGHT));
-			collidables.add(player);
-			collidables.add(bottom);
-			collidables.add(enemy1);
-			collidables.add(other);
-			collidables.add(col1);
-			
-			
-		
-		
->>>>>>> refs/remotes/origin/master
 	}
-	//push
 	
     @Override
     protected void paintComponent(Graphics g) {
