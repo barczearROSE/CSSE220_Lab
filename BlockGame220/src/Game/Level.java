@@ -43,6 +43,7 @@ public class Level extends JComponent{
 		
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		collidables = levelSet;
+		this.player = (Player)collidables.get(0);
 	}
 	
     @Override
@@ -104,7 +105,12 @@ public class Level extends JComponent{
     
     
     
-    
+    public void setLevel(ArrayList<Collidable> levelSet)
+    {
+    	
+    	this.collidables = levelSet;
+    	this.player = (Player)levelSet.get(0);
+    }
     
 	
 

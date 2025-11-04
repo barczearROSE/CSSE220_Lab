@@ -22,12 +22,15 @@ public class LevelHandler extends JPanel{
 	private final HUDModel hudModel = new HUDModel();
 	private final HUDView hudView = new HUDView();
 	private static final long serialVersionUID = 1L;
-	private final Level canvas = new Level();
+	private Level canvas = new Level();
 	private int score = 0;
 	JLabel gameOverScreen = new JLabel("Game Over!");
 	private int level = 1;
 	Timer timer;
 	
+	private int lastLevel;
+	JLabel scoreLabel = new JLabel("Life Default");
+    JLabel lifeLabel = new JLabel("Score Default");
 	
 	private Platform lvl2Wall = new Platform(200,200,1000,1000);
 	private Player player = new Player(10,10);
@@ -42,12 +45,15 @@ public class LevelHandler extends JPanel{
 	
 	public LevelHandler() {
 		
-		level1.add(new Player(10,10));
+		level1.add(player);
 		level1.add(new Platform(0,768-10,1024,10));
 		level1.add(new Collectible(300, 200));
 		level1.add(new Enemy(512, 384, 768, 256));
 		
+		level2.add(player);
+		level2.add(new Platform(200,200,500,500));
 		
+		canvas = new Level(level1);
 		
 		
 		this.setLayout(new BorderLayout(8, 8));
@@ -55,8 +61,8 @@ public class LevelHandler extends JPanel{
         this.setBackground(canvas.BG);
         this.buildKeys();
         
-        JLabel scoreLabel = new JLabel("Score: " + canvas.player.getScore());
-        JLabel lifeLabel = new JLabel("Lives: " + canvas.player.getLives());
+        JLabel scoreLabel = new JLabel();
+        JLabel lifeLabel = new JLabel();
         Font hudFont = new Font("Serif", Font.PLAIN, 24);
         
 		scoreLabel.setBounds(50,50,200,30);
@@ -78,6 +84,7 @@ public class LevelHandler extends JPanel{
 			   canvas.collide();
 			   lifeLabel.setText("Lives: " + canvas.player.getLives());
 			   scoreLabel.setText("Score: " + canvas.player.getScore());
+			   updateScore();
 	           canvas.repaint();
 	           //layered.repaint();
 	           
@@ -86,44 +93,17 @@ public class LevelHandler extends JPanel{
 	        	   gameOver();
 	        	   timer.stop();
 	           }
+	           
+	          updateLevel();
 	        });
 		   timer.start();
 		  
-		 /* 
 
-
-		   canvas.setOpaque(true);
-		   layered.add(canvas); 
-		   hudView.setOpaque(false);
-		   hudView.setAlignmentX(0f); // left
-		   hudView.setAlignmentY(0f); // top
-		   hudView.setBorder(javax.swing.BorderFactory.createEmptyBorder(8,8,0,0));
-		   layered.add(hudView); // top
-
-
-		   add(layered, BorderLayout.CENTER);
-		   
- */
-
-		   // initial sync
-		   //hudView.refresh(hudModel);
-		   
-		   
 		}
 	
 	
 	
-//	private JComponent buildControls(){
-//		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
-//        JButton left = new JButton("Left");
-//        JButton right = new JButton("Right");
-//        JButton up = new JButton("Up");
-//        
-//        controls.add(left); 
-//        controls.add(right);
-//        controls.add(up);
-//        return controls;
-//	}
+
 	
 private void buildKeys() {
 		
@@ -194,6 +174,31 @@ private void buildKeys() {
 		canvas.add(gameOverScreen);
 		
 		
+	}
+	
+	private void updateLevel()
+	{
+		System.out.println(level);
+		 if(level == 2 && lastLevel == 1)
+		{
+			canvas.setLevel(level2);
+			canvas.player.setX(10);
+			canvas.player.setY(10);
+			lastLevel = 2;
+			
+		}
+		 
+	}
+	
+	private void updateScore()
+	{
+		scoreLabel.setText("Score: " + canvas.player.getScore());
+		if(canvas.player.getScore() == 1)
+		{
+			level = 2;
+			lastLevel = 1;
+			canvas.player.setScore(0);
+		}
 	}
 	
 }
