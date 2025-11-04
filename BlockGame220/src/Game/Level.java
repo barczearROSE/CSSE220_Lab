@@ -17,6 +17,7 @@ import javax.swing.JComponent;
 public class Level extends JComponent{
 
 	private static final long serialVersionUID = 1L;
+	public static int level = 1;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	public final Color BG = Color.WHITE;
@@ -28,13 +29,20 @@ public class Level extends JComponent{
 	private Collectible col1 = new Collectible(300, 200);
 	
 	
+	
 	public Level() {
-		setPreferredSize(new Dimension(WIDTH,HEIGHT));
-		collidables.add(player);
-		collidables.add(bottom);
-		collidables.add(enemy1);
-		collidables.add(other);
-		collidables.add(col1);
+		
+		
+	
+			setPreferredSize(new Dimension(WIDTH,HEIGHT));
+			collidables.add(player);
+			collidables.add(bottom);
+			collidables.add(enemy1);
+			collidables.add(other);
+			collidables.add(col1);
+			
+			
+		
 		
 	}
 	//push
