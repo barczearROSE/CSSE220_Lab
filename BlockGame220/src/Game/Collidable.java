@@ -15,6 +15,8 @@ public class Collidable {
 	protected int Y;
 	protected int Vx;
 	protected int Vy;
+	protected int startX;
+	protected int startY;
     public Rectangle boundingBox;
 	
 	public Collidable(int X, int Y) {
@@ -22,6 +24,8 @@ public class Collidable {
 		this.Y = Y;
 		this.Vx = 0;
 		this.Vy = 0;
+		this.startX = X;
+		this.startY = Y;
 		this.boundingBox = new Rectangle(this.X,this.Y,10,10);
 	}
 	
@@ -30,6 +34,8 @@ public class Collidable {
 		this.Y = Y;
 		this.Vx = 0;
 		this.Vy = 0;
+		this.startX = X;
+		this.startY = Y;
 		this.boundingBox = new Rectangle(this.X,this.Y,width,height);
 	}
 	

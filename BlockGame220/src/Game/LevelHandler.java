@@ -148,23 +148,22 @@ private void buildKeys() {
                 	canvas.jumpPlayer(01);
                 	break;
                 
-            }
+	        	}
 	        }
 	    });
 		
 	}
 
 
-private void gameOver()
-{
-	
-	gameOverScreen.setBounds(250, 250, 1000, 200);
-	Font gameOverFont = new Font("Serif", Font.BOLD, 100);
-	gameOverScreen.setFont(gameOverFont);
-	canvas.add(gameOverScreen);
-	
-	
-}
+	private void gameOver(){
+		
+		gameOverScreen.setBounds(250, 250, 1000, 200);
+		Font gameOverFont = new Font("Serif", Font.BOLD, 100);
+		gameOverScreen.setFont(gameOverFont);
+		canvas.add(gameOverScreen);
+		
+		
+	}
 	
 }
 
