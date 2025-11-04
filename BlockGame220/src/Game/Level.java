@@ -31,21 +31,13 @@ public class Level extends JComponent{
 	
 	
 	public Level() {
-		
-		
-	
-			setPreferredSize(new Dimension(WIDTH,HEIGHT));
-			collidables.add(player);
-			collidables.add(bottom);
-			collidables.add(enemy1);
-			collidables.add(other);
-			collidables.add(col1);
-			
-			
-		
-		
+		setPreferredSize(new Dimension(WIDTH,HEIGHT));
+		collidables.add(player);
+		collidables.add(bottom);
+		collidables.add(enemy1);
+		collidables.add(other);
+		collidables.add(col1);
 	}
-	//push
 	
     @Override
     protected void paintComponent(Graphics g) {
@@ -83,6 +75,25 @@ public class Level extends JComponent{
     
     public void jumpPlayer(int velocityY) {
     	player.setVy(velocityY);
+    }
+    
+    public void collect() {
+    	player.setCollect(true);
+    	collide();
+    	player.setCollect(false);
+    }
+    
+    public void checkBounds() {
+    	if(player.getX()>=WIDTH) {
+    		player.setX(0);
+    	}else if(player.getX() < 0) {
+    		player.setX(WIDTH);
+    	}
+    	if(player.getY()>=HEIGHT) {
+    		player.setY(0);
+    	}else if(player.getY() < 0) {
+    		player.setY(HEIGHT);
+    	}
     }
     
     
