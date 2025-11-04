@@ -33,6 +33,7 @@ public class LevelHandler extends JPanel{
 	private Player player = new Player(10,10);
 	
 	private ArrayList<Collidable> level1 = new ArrayList<Collidable>();
+	private ArrayList<Collidable> level2 = new ArrayList<Collidable>();
 	
 	public LevelHandler() {
 		this.setLayout(new BorderLayout(8, 8));
@@ -40,7 +41,7 @@ public class LevelHandler extends JPanel{
         this.setBackground(canvas.BG);
         this.buildKeys();
         
-        JLabel scoreLabel = new JLabel("Score: " + score);
+        JLabel scoreLabel = new JLabel("Score: " + canvas.player.getScore());
         JLabel lifeLabel = new JLabel("Lives: " + canvas.player.getLives());
         Font hudFont = new Font("Serif", Font.PLAIN, 24);
         
@@ -61,6 +62,8 @@ public class LevelHandler extends JPanel{
 			   canvas.moveAll();
 			   canvas.checkBounds();
 			   canvas.collide();
+			   lifeLabel.setText("Lives: " + canvas.player.getLives());
+			   scoreLabel.setText("Score: " + canvas.player.getScore());
 	           canvas.repaint();
 	           //layered.repaint();
 	           
