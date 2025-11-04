@@ -8,6 +8,7 @@ package Game;
  */
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import java.awt.BorderLayout;
@@ -24,8 +25,14 @@ public class LevelHandler extends JPanel{
 	private final Level canvas = new Level();
 	private int score = 0;
 	JLabel gameOverScreen = new JLabel("Game Over!");
-	
+	private int level = 1;
 	Timer timer;
+	
+	
+	private Platform lvl2Wall = new Platform(200,200,1000,1000);
+	private Player player = new Player(10,10);
+	
+	private ArrayList<Collidable> level1 = new ArrayList<Collidable>();
 	
 	public LevelHandler() {
 		this.setLayout(new BorderLayout(8, 8));
