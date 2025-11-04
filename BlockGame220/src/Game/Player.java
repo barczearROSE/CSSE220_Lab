@@ -20,6 +20,10 @@ public class Player extends Collidable {
     private boolean spriteLoaded = false;//new
     private boolean buffSpriteLoaded = false;
     private int lives;
+    private Rectangle head = new Rectangle(this.X+5,this.Y,this.boundingBox.width-5,1);
+    private Rectangle feet = new Rectangle(this.X+5,this.Y + this.boundingBox.height,this.boundingBox.width-5,1);
+    private Rectangle left = new Rectangle(this.X,this.Y+5,1,this.boundingBox.height-5);
+    private Rectangle right = new Rectangle(this.X+this.boundingBox.width,this.Y+5,1,this.boundingBox.height-5);
 
 
 		public Player(int X, int Y) {
@@ -41,15 +45,27 @@ public class Player extends Collidable {
 			this.X += this.Vx;
 			this.Y += this.Vy;
 			this.boundingBox.setBounds(X, Y, 50, 50);
+			
+			this.head.setBounds(this.X+5,this.Y,this.boundingBox.width-10,1);
+			
+			this.feet.setBounds(this.X+5,this.Y + this.boundingBox.height-1,this.boundingBox.width-10,1);
+			
+			this.left.setBounds(this.X,this.Y+10,1,this.boundingBox.height-15);
+			
+			this.right.setBounds(this.X+this.boundingBox.width-1,this.Y+10,1,this.boundingBox.height-15);
 		}
 		
 		@Override
 		public boolean collide(Collidable c) {
 			if(super.collide(c)) {
 				if(c instanceof Platform) {
-					if(c.boundingBox.intersects(new Rectangle(this.X+1,this.Y,this.boundingBox.width-1,1))) { // head collision
+					if(c.boundingBox.intersects(this.left)) { // left side collison
+						this.setX(c.getX() + c.boundingBox.width);
+					}else if(c.boundingBox.intersects(this.right)) { //right side collison
+						this.setX(c.getX() - this.boundingBox.width);
+					}else if(c.boundingBox.intersects(this.head)) { // head collision
 						this.setY(c.getY() + c.boundingBox.height);
-					}else if(c.boundingBox.intersects(new Rectangle(this.X+1,this.Y + this.boundingBox.height,this.boundingBox.width-1,1))) { // foot collision
+					}else if(c.boundingBox.intersects(this.feet)) { // foot collision
 						this.setY(c.getY() - this.boundingBox.height);
 					}
 				}else if(c instanceof Enemy) {
@@ -64,6 +80,22 @@ public class Player extends Collidable {
 		
 		@Override
 		public void draw(Graphics2D g2) {
+			//Platform collision boxes test
+//			Color temp = g2.getColor();
+//			g2.setColor(Color.RED);
+//			g2.draw(this.head);
+//			g2.fill(this.head);
+//			g2.setColor(Color.orange);
+//			g2.draw(this.feet);
+//			g2.fill(this.feet);
+//			g2.setColor(Color.GREEN);
+//			g2.draw(this.left);
+//			g2.fill(this.left);
+//			g2.setColor(Color.BLUE);
+//			g2.draw(this.right);
+//			g2.fill(this.right);
+//			g2.setColor(temp);
+			
 			if (buffSpriteLoaded & this.Vx !=0){
 	    		g2.drawImage(moveSprite, X, Y, 50,50, null);
 			}else if (spriteLoaded) {   // new
