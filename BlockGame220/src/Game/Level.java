@@ -39,6 +39,12 @@ public class Level extends JComponent{
 		collidables.add(col1);
 	}
 	
+	public Level(ArrayList<Collidable> levelSet) {
+		
+		setPreferredSize(new Dimension(WIDTH,HEIGHT));
+		collidables = levelSet;
+	}
+	
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

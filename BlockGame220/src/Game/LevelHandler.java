@@ -32,10 +32,24 @@ public class LevelHandler extends JPanel{
 	private Platform lvl2Wall = new Platform(200,200,1000,1000);
 	private Player player = new Player(10,10);
 	
+	private Platform bottom = new Platform(0,768-10,1024,10);
+	private Platform other = new Platform(100,500,200,50);
+	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
+	private Collectible col1 = new Collectible(300, 200);
+	
 	private ArrayList<Collidable> level1 = new ArrayList<Collidable>();
 	private ArrayList<Collidable> level2 = new ArrayList<Collidable>();
 	
 	public LevelHandler() {
+		
+		level1.add(new Player(10,10));
+		level1.add(new Platform(0,768-10,1024,10));
+		level1.add(new Collectible(300, 200));
+		level1.add(new Enemy(512, 384, 768, 256));
+		
+		
+		
+		
 		this.setLayout(new BorderLayout(8, 8));
         this.add(canvas, BorderLayout.CENTER);
         this.setBackground(canvas.BG);
