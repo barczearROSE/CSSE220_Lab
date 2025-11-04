@@ -75,7 +75,8 @@ public class Player extends Collidable {
 					this.X = startX;
 					this.Y = startY;
 				}else if(c instanceof Collectible) {
-					if(this.collect) {
+					
+					if(this.collect & !((Collectible) c).getCollected()) {
 						this.score++;
 						((Collectible) c).setCollected(true);
 					}

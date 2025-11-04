@@ -36,6 +36,9 @@ public class Collectible extends Collidable {
 	public void setCollected(boolean b) {
 		this.collected = b;
 	}
+	public boolean getCollected() {
+		return this.collected;
+	}
 	
 	
 
