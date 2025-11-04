@@ -37,6 +37,7 @@ public class Level extends JComponent{
 		collidables.add(col1);
 		
 	}
+	//push
 	
     @Override
     protected void paintComponent(Graphics g) {
