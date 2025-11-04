@@ -70,6 +70,8 @@ public class Player extends Collidable {
 					}
 				}else if(c instanceof Enemy) {
 					this.lives--;
+					this.X = startX;
+					this.Y = startY;
 				}else if(c instanceof Collectible) {
 					
 				}
