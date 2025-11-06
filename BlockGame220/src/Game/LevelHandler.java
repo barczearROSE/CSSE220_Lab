@@ -49,6 +49,7 @@ public class LevelHandler extends JPanel{
 		level1.add(new Platform(0,768-10,1024,10));
 		level1.add(new Collectible(300, 200));
 		level1.add(new Enemy(512, 384, 768, 256));
+		level1.add(other);
 		
 		level2.add(player);
 		level2.add(new Platform(200,200,500,500));
@@ -76,8 +77,7 @@ public class LevelHandler extends JPanel{
         JPanel layered = new JPanel();
 		layered.setLayout(new OverlayLayout(layered));
 		layered.setOpaque(false);
-//		   
-//		   
+	   
 		   timer = new Timer(30, e -> {
 			   canvas.moveAll();
 			   canvas.checkBounds();
@@ -88,8 +88,7 @@ public class LevelHandler extends JPanel{
 	           canvas.repaint();
 	           //layered.repaint();
 	           
-	           if(canvas.player.getLives() <= 0)
-	           {
+	           if(canvas.player.getLives() <= 0){
 	        	   gameOver();
 	        	   timer.stop();
 	           }
@@ -176,9 +175,7 @@ private void buildKeys() {
 		
 	}
 	
-	private void updateLevel()
-	{
-		System.out.println(level);
+	private void updateLevel(){
 		 if(level == 2 && lastLevel == 1)
 		{
 			canvas.setLevel(level2);
@@ -190,8 +187,7 @@ private void buildKeys() {
 		 
 	}
 	
-	private void updateScore()
-	{
+	private void updateScore(){
 		scoreLabel.setText("Score: " + canvas.player.getScore());
 		if(canvas.player.getScore() == 1)
 		{
