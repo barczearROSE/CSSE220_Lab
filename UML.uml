@@ -1,50 +1,194 @@
 @startuml
 !theme crt-amber
-class GameHandler{
-
+class Level [[java:Game.Level]] {
+	-{static} serialVersionUID: long
+	+{static} level: int
+	+{static} WIDTH: int
+	+{static} HEIGHT: int
+	+BG: Color
+	+Level()
+	+Level(levelSet: ArrayList<Collidable>)
+	#paintComponent(g: Graphics): void
+	+moveAll(): void
+	+collide(): void
+	+movePlayer(velocityX: int): void
+	+jumpPlayer(velocityY: int): void
+	+collect(): void
+	+checkBounds(): void
 }
-
-class LevelHandler extends JPanel{
-
+class Player {
 }
-
-class HUD{
-
+Level --> "1" Player : player
+class Platform {
 }
-
-class Player extends Collidable{
-
-
+Level --> "1" Platform : bottom
+class Platform {
 }
-
-class Collectible extends Collidable{
-
+Level --> "1" Platform : other
+class Collidable {
 }
-
-class Enemy extends Collidable{
-
+Level --> "*" Collidable : collidables
+class Enemy {
 }
-
-class Level extends JComponent{
-
+Level --> "1" Enemy : enemy1
+class Collectible {
 }
-
-
-class Platform extends Collidable{
-
+Level --> "1" Collectible : col1
+class JComponent {
 }
-
-class Collidable{
-
+JComponent <|-- Level
+class Player [[java:Game.Player]] {
+	-sprite: BufferedImage
+	-moveSprite: BufferedImage
+	-spriteLoaded: boolean
+	-buffSpriteLoaded: boolean
+	-collect: boolean
+	-lives: int
+	-score: int
+	-head: Rectangle
+	-feet: Rectangle
+	-left: Rectangle
+	-right: Rectangle
+	+Player(X: int, Y: int)
+	+move(): void
+	+collide(c: Collidable): boolean
+	+draw(g2: Graphics2D): void
+	+getLives(): int
+	+setLives(i: int): void
+	+getScore(): int
+	+setScore(i: int): void
+	+setCollect(b: boolean): void
 }
-
-GameHandler --> Level
-GameHandler --> LevelHandler
-LevelHandler ..> Player
-LevelHandler -->"*" Level
-Level --> HUD
-Level -->"*" Collidable
-Player ..> HUD
-
-
+class Collidable {
+}
+Collidable <|-- Player
+class HUDView [[java:Game.HUDView]] {
+	-scoreBoard: JLabel
+	+HUDView()
+	+refresh(hud: HUDModel): void
+}
+class "javax.swing.JLabel" as javax_swing_JLabel [[java:javax.swing.JLabel]] {
+}
+javax_swing_JLabel <|-- HUDView
+class Collectible [[java:Game.Collectible]] {
+	-sprite: BufferedImage
+	-spriteLoaded: boolean
+	-collected: boolean
+	+Collectible(X: int, Y: int)
+	+draw(g2: Graphics2D): void
+	+setCollected(b: boolean): void
+	+getCollected(): boolean
+}
+class Collidable {
+}
+Collidable <|-- Collectible
+class GameApp [[java:Game.GameApp]] {
+	-frame: JFrame
+	+GameApp()
+	+show(): void
+}
+class LevelHandler {
+}
+GameApp --> "1" LevelHandler : panel
+class Main [[java:Game.Main]] {
+	+{static} main(args: String[]): void
+}
+class HUDModel [[java:Game.HUDModel]] {
+	-score: int
+	+getScore(): int
+	+incScore(): void
+}
+class Enemy [[java:Game.Enemy]] {
+	-sprite: BufferedImage
+	-spriteLoaded: boolean
+	-maxDist: int
+	-minDist: int
+	-speed: int
+	+Enemy(X: int, Y: int, maxDist: int, minDist: int)
+	+move(): void
+	+draw(g2: Graphics2D): void
+}
+class Collidable {
+}
+Collidable <|-- Enemy
+class Platform [[java:Game.Platform]] {
+	+Platform(X: int, Y: int, width: int, height: int)
+	+draw(g2: Graphics2D): void
+}
+class Collidable {
+}
+Collidable <|-- Platform
+class LevelHandler [[java:Game.LevelHandler]] {
+	-{static} serialVersionUID: long
+	-score: int
+	~gameOverScreen: JLabel
+	-level: int
+	~timer: Timer
+	+LevelHandler()
+	-buildKeys(): void
+	-gameOver(): void
+}
+class HUDModel {
+}
+LevelHandler --> "1" HUDModel : hudModel
+class HUDView {
+}
+LevelHandler --> "1" HUDView : hudView
+class Level {
+}
+LevelHandler --> "1" Level : canvas
+class Platform {
+}
+LevelHandler --> "1" Platform : lvl2Wall
+class Player {
+}
+LevelHandler --> "1" Player : player
+class Platform {
+}
+LevelHandler --> "1" Platform : bottom
+class Platform {
+}
+LevelHandler --> "1" Platform : other
+class Enemy {
+}
+LevelHandler --> "1" Enemy : enemy1
+class Collectible {
+}
+LevelHandler --> "1" Collectible : col1
+class Collidable {
+}
+LevelHandler --> "*" Collidable : level1
+class Collidable {
+}
+LevelHandler --> "*" Collidable : level2
+class JPanel {
+}
+JPanel <|-- LevelHandler
+class ScoreManager [[java:Game.ScoreManager]] {
+	-{static} SCORES_FILE: String
+	+{static} saveScore(player: String, score: int): void
+	+{static} loadScores(): List<String>
+}
+class Collidable [[java:Game.Collidable]] {
+	#X: int
+	#Y: int
+	#Vx: int
+	#Vy: int
+	#startX: int
+	#startY: int
+	+boundingBox: Rectangle
+	+Collidable(X: int, Y: int)
+	+Collidable(X: int, Y: int, width: int, height: int)
+	+getX(): int
+	+getY(): int
+	+getVx(): int
+	+getVy(): int
+	+setX(X: int): void
+	+setY(Y: int): void
+	+setVx(V: int): void
+	+setVy(V: int): void
+	+move(): void
+	+collide(newObject: Collidable): boolean
+	+draw(g2: Graphics2D): void
+}
 @enduml
