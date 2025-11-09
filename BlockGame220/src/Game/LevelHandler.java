@@ -125,6 +125,13 @@ private void buildKeys() {
 	                case KeyEvent.VK_DOWN:
 	                	canvas.collect();
 	                	break;
+	                case KeyEvent.VK_SPACE:
+	                	canvas.remove(gameOverScreen);
+	                	canvas.player.setLives(3);
+	                	canvas.player.setScore(0);
+	                	canvas.setLevel(level1);
+	                	timer.restart();
+	                	break;
 	                default:
 	                	canvas.movePlayer(0);
 	                	canvas.jumpPlayer(01);
