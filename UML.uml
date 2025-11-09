@@ -1,50 +1,126 @@
 @startuml
 !theme crt-amber
-class GameHandler{
 
+class Main {
++ main(args : String[]) : <<static>>
+}
+
+class GameApp{
+- frame: JFrame
+- panel : Level Handler
+
++ GameApp()
++ show() : void
 }
 
 class LevelHandler extends JPanel{
+- hudModel : HUDModel
+- hudView : HUDView
+- serialVersionUID : long <<static>>
+- canvas : Level
+- score : int
+- timer : Timer
 
++ LevelHandler()
+- buildControls() : JComponent
+- buildKeys() : void
 }
 
-class HUD{
+class HUDModel{
+- score : int
 
++ getScore() : int
++ incScore() : void
+}
+
+class HUDView extends JLabel{
+- scoreBoard : JLabel
+
++ HUDView()
++ refresh() : void
 }
 
 class Player extends Collidable{
-
-
+- sprite : BufferedImage
+- spriteLoaded : boolean
++ Player(X : int, Y : int)
++ move()
++ draw(g2 : Graphics2D)
 }
 
 class Collectible extends Collidable{
-
++ Collectible(X : int, Y : int)
 }
 
 class Enemy extends Collidable{
+reverse : int
+- sprite : BufferedImage
+- spriteLoaded : boolean
+- maxDist : int
+- minDist : int
+- speed : int
 
++ Enemy(X : int, Y : int)
++ move(maxDist : int, minDist : int, speed : int)
++ draw(g2 : Graphics2D)
 }
 
 class Level extends JComponent{
+- serialVersionUID : long <<static, final>>
++ WIDTH : int <<static, final>>
++ HEIGHT : int <<static, final>>
+- player : Player
+- collidables : ArrayList<Collidable>
 
++ Level()
++ paintComponent(g : Graphics) : void
++ moveAll() : void
++ movePlayer(velocityX : int) : void
++ jumpPlayer(velocityY : int) : void
 }
 
 
 class Platform extends Collidable{
-
++ Platform(X : int, Y : int)
 }
 
 class Collidable{
+- X : int
+- Y : int
+- Vx : int
+- Vy : int
 
++ Collidiable(X : int, Y : int)
++ getX() : int
++ getY() : int
++ getVx() : int
++ getVy() : int
++ setX(int X) : void
++ setY(int Y) : void
++ setVx(int V) : void
++ setVyint V) : void
++ Collision(newObject : Collidable)
++ move()
++ draw(g2 : Graphics2D)
 }
 
-GameHandler --> Level
-GameHandler --> LevelHandler
-LevelHandler ..> Player
-LevelHandler -->"*" Level
-Level --> HUD
-Level -->"*" Collidable
-Player ..> HUD
+class ScoreManager{
+- SCORES_FILE : String <<static, final>>
 
++ saveScore(player : String, score : int) : static
++ loadScores() : <<static, List<String>>>
+}
+
+Main --> GameApp
+GameApp --> JFrame
+GameApp --> LevelHandler
+LevelHandler -->"*" Level
+HUDView --> HUDModel
+Level -->"*" Collidable
+Level --> Player
+Level -->"*" Enemy
+Level -->"*" Platform
+Level -->"*" Collectible
+LevelHandler ..> Player
 
 @enduml
