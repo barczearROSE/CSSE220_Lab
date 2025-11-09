@@ -42,14 +42,6 @@ public class Enemy extends Collidable {
 			speed = speed * -1;
 			this.X = this.minDist + 1;
 		}
-//		if (X + speed >= maxDist || X - speed <= minDist) {
-////			if (reverse < 0) {
-////				this.X = maxDist;
-////			} else if (reverse > 0) {
-////				this.X = minDist;
-////			};
-//			speed = speed * -1;
-//		};
 		this.X += speed;
 		this.boundingBox.setBounds(X, Y, 10, 10);
 	};

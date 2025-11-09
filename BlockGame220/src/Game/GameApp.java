@@ -16,8 +16,7 @@ public class GameApp{
 	private LevelHandler panel = new LevelHandler();
 	
 	//Constructs the main game window.
-	public  GameApp()
-	{
+	public  GameApp(){
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(panel);

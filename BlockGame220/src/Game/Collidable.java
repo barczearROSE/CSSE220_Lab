@@ -82,5 +82,12 @@ public class Collidable {
 	public void draw(Graphics2D g2) {
 		
 	}
+	
+	public int getStartX() {
+		return this.startX;
+	}
+	public int getStartY() {
+		return this.startY;
+	}
 
 }
