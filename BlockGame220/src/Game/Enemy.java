@@ -5,7 +5,6 @@ package Game;
  * Moves horizontally between a minimum and maximum distance.
  */
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;

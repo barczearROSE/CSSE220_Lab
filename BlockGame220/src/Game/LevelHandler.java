@@ -9,10 +9,8 @@ package Game;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
