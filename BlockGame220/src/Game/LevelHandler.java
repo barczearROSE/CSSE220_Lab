@@ -34,7 +34,9 @@ public class LevelHandler extends JPanel{
 	private Player player = new Player(10,10);
 	
 	private Platform bottom = new Platform(0,768-10,1024,10);
-	private Platform other = new Platform(100,500,200,50);
+	private Platform firstJump = new Platform(200,600,100,50);
+	private Platform secondJump = new Platform(400, 500, 100, 50);
+	
 	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
 	private Collectible col1 = new Collectible(300, 200);
 	
@@ -47,7 +49,8 @@ public class LevelHandler extends JPanel{
 		level1.add(new Platform(0,768-10,1024,10));
 		level1.add(new Collectible(300, 200));
 		level1.add(new Enemy(512, 384, 768, 256));
-		level1.add(other);
+		level1.add(firstJump);
+		level1.add(secondJump);
 		
 		level2.add(player);
 		level2.add(new Platform(200,200,500,500));
