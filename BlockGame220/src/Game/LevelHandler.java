@@ -36,8 +36,12 @@ public class LevelHandler extends JPanel{
 	private Platform bottom = new Platform(0,768-10,1024,10);
 	private Platform firstJump = new Platform(200,600,100,50);
 	private Platform secondJump = new Platform(400, 500, 100, 50);
+	private Platform wall = new Platform(750,100,20,700);
+	private Platform downward2 = new Platform(875,400,150,50);
+	private Platform downward1 = new Platform(770,150,150,50);
+	private Platform downward3 = new Platform(770,650,150,50);
 	
-	private Enemy enemy1 = new Enemy(512, 384, 768, 256);
+	private Enemy enemy1 = new Enemy(450, 500, 400, 500);
 	private Collectible col1 = new Collectible(300, 200);
 	
 	private ArrayList<Collidable> level1 = new ArrayList<Collidable>();
@@ -47,10 +51,22 @@ public class LevelHandler extends JPanel{
 		
 		level1.add(player);
 		level1.add(new Platform(0,768-10,1024,10));
-		level1.add(new Collectible(300, 200));
-		level1.add(new Enemy(512, 384, 768, 256));
+		level1.add(new Collectible(230, 245));
+		level1.add(new Collectible(950,150));
+		level1.add(new Collectible(950,650));
+		
 		level1.add(firstJump);
 		level1.add(secondJump);
+		level1.add(new Platform(200,300,100,50));
+		level1.add(new Platform(550,200,100,50));
+		level1.add(wall);
+		
+		level1.add(downward1);
+		level1.add(downward2);
+		level1.add(downward3);
+		
+		
+		
 		
 		level2.add(player);
 		level2.add(new Platform(200,200,500,500));
@@ -197,7 +213,7 @@ private void buildKeys() {
 	
 	private void updateScore(){
 		scoreLabel.setText("Score: " + canvas.player.getScore());
-		if(canvas.player.getScore() == 1)
+		if(canvas.player.getScore() == 3)
 		{
 			level = 2;
 			lastLevel = 1;
