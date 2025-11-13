@@ -30,7 +30,7 @@ public class Collidable {
 		this.startY = Y;
 		this.boundingBox = new Rectangle(this.X,this.Y,scale,scale);
 		this.scale= scale;
-		}
+	}
 	
 	public Collidable(int X, int Y, int width, int height) {
 		this.X = X;
@@ -71,29 +71,25 @@ public class Collidable {
 			this.lastVx = this.Vx;
 		}
 		this.Vx = speed;
-	}
+	};
 	
 	public void setVy(int V) {
 		this.Vy = V;
 	};
 	
-	public void move() {
-		
-	};
+	public void move() {};
 	
 	public boolean collide(Collidable newObject) {
 		return this.boundingBox.intersects(newObject.boundingBox);
 	};
 
-	public void draw(Graphics2D g2) {
-		
-	}
+	public void draw(Graphics2D g2) {}
 	
 	public int getStartX() {
 		return this.startX;
-	}
+	};
+	
 	public int getStartY() {
 		return this.startY;
-	}
-
+	};
 }
