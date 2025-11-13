@@ -31,7 +31,7 @@ public class LevelHandler extends JPanel{
     JLabel lifeLabel = new JLabel("Score Default");
 	
 //	private Platform lvl2Wall = new Platform(200,200,1000,1000);
-	private Player player = new Player(10,710);
+	private Player player = new Player(15,700);
 	
 //	private Platform bottom = new Platform(0,768-10,1024,10);
 	private Platform firstJump = new Platform(200,600,100,50);
