@@ -17,11 +17,10 @@ import java.awt.event.KeyEvent;
 
 public class LevelHandler extends JPanel{
 	
-	private final HUDModel hudModel = new HUDModel();
-	private final HUDView hudView = new HUDView();
 	private static final long serialVersionUID = 1L;
 	private Level canvas = new Level();
-	private int score = 0;
+//	private int score = 0;
+	private int fallingSpeed = 5;
 	JLabel gameOverScreen = new JLabel("Game Over!");
 	JLabel gameWinScreen = new JLabel("You Won!");
 	private int level = 1;
@@ -31,10 +30,10 @@ public class LevelHandler extends JPanel{
 	JLabel scoreLabel = new JLabel("Life Default");
     JLabel lifeLabel = new JLabel("Score Default");
 	
-	private Platform lvl2Wall = new Platform(200,200,1000,1000);
+//	private Platform lvl2Wall = new Platform(200,200,1000,1000);
 	private Player player = new Player(10,710);
 	
-	private Platform bottom = new Platform(0,768-10,1024,10);
+//	private Platform bottom = new Platform(0,768-10,1024,10);
 	private Platform firstJump = new Platform(200,600,100,50);
 	private Platform secondJump = new Platform(400, 500, 100, 50);
 	private Platform wall = new Platform(750,100,20,700);
@@ -43,8 +42,8 @@ public class LevelHandler extends JPanel{
 	private Platform downward1 = new Platform(770,150,150,50);
 	private Platform downward3 = new Platform(770,650,150,50);
 	
-	private Enemy enemy1 = new Enemy(450, 400, 200, 500);
-	private Collectible col1 = new Collectible(300, 200);
+	private Enemy enemy1 = new Enemy(450, 400, 500, 200);
+//	private Collectible col1 = new Collectible(300, 200);
 	
 	private ArrayList<Collidable> level1 = new ArrayList<Collidable>();
 	private ArrayList<Collidable> level2 = new ArrayList<Collidable>();
@@ -122,8 +121,7 @@ public class LevelHandler extends JPanel{
 	        	   gameOver();
 	        	   timer.stop();
 	           }
-	           if(canvas.player.getScore() >= 6)
-	           {
+	           if(canvas.player.getScore() >= 6){
 	        	   gameWin();
 	        	   timer.stop();
 	           }
@@ -168,7 +166,7 @@ private void buildKeys() {
 	                	break;
 	                default:
 	                	canvas.movePlayer(0);
-	                	canvas.jumpPlayer(01);
+	                	canvas.jumpPlayer(fallingSpeed);
 	                	break;
 	                
 	            }
@@ -177,26 +175,26 @@ private void buildKeys() {
 	        	switch (e.getKeyCode()) {
 	            case KeyEvent.KEY_RELEASED:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(01);
+                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 case KeyEvent.VK_LEFT:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(01);
+                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 case KeyEvent.VK_RIGHT:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(01);
+                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 case KeyEvent.VK_UP:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(01);
+                	canvas.jumpPlayer(fallingSpeed);
                     break;
                 case KeyEvent.VK_DOWN:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(01);
+                	canvas.jumpPlayer(fallingSpeed);
                 default:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(01);
+                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 
 	        	}
@@ -207,7 +205,6 @@ private void buildKeys() {
 
 
 	private void gameOver(){
-		
 		gameOverScreen.setBounds(250, 250, 1000, 200);
 		Font gameOverFont = new Font("Serif", Font.BOLD, 100);
 		gameOverScreen.setFont(gameOverFont);
@@ -216,8 +213,7 @@ private void buildKeys() {
 		
 	}
 	
-	private void gameWin()
-	{
+	private void gameWin(){
 		gameWinScreen.setBounds(250,250,1000,200);
 		Font gameOverFont = new Font("Serif", Font.BOLD, 100);
 		gameWinScreen.setFont(gameOverFont);
@@ -225,8 +221,7 @@ private void buildKeys() {
 	}
 	
 	private void updateLevel(){
-		 if(level == 2 && lastLevel == 1)
-		{
+		 if(level == 2 && lastLevel == 1){
 			canvas.setLevel(level2);
 			canvas.player.setX(10);
 			canvas.player.setY(10);
@@ -238,8 +233,7 @@ private void buildKeys() {
 	
 	private void updateScore(){
 		scoreLabel.setText("Score: " + canvas.player.getScore());
-		if(canvas.player.getScore() == 1)
-		{
+		if(canvas.player.getScore() == 3){
 			level = 2;
 			lastLevel = 1;
 			canvas.player.setScore(0);

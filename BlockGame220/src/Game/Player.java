@@ -28,10 +28,10 @@ public class Player extends Collidable {
 
 
 		public Player(int X, int Y) {
-			super(X,Y);
+			super(X,Y,20,50);
 			this.lives  = 3;
 	        try {
-	            sprite = ImageIO.read(Player.class.getResource("dagobo.png"));
+	            sprite = ImageIO.read(Player.class.getResource("playah.png"));
 	            spriteLoaded = (sprite != null);
 	            moveSprite = ImageIO.read(Player.class.getResource("PLAYAHMOVING.png"));
 	            buffSpriteLoaded = (moveSprite != null);
@@ -45,7 +45,7 @@ public class Player extends Collidable {
 		public void move(){
 			this.X += this.Vx;
 			this.Y += this.Vy;
-			this.boundingBox.setBounds(X, Y, 50, 50);
+			this.boundingBox.setBounds(X, Y, this.boundingBox.width, this.boundingBox.height);
 			
 			this.head.setBounds(this.X+5,this.Y,this.boundingBox.width-10,1);
 			
@@ -102,17 +102,23 @@ public class Player extends Collidable {
 //			g2.fill(this.right);
 //			g2.setColor(temp);
 			
-			if (buffSpriteLoaded & this.Vx !=0){
-	    		g2.drawImage(moveSprite, X, Y, 50,50, null);
-			}else if (spriteLoaded) {   // new
-	    	    g2.drawImage(sprite, X, Y, 50, 50, null);
+			if (buffSpriteLoaded & this.Vx > 0){
+	    		g2.drawImage(moveSprite, X, Y, this.boundingBox.width,this.boundingBox.height, null);
+			}else if (buffSpriteLoaded & this.Vx < 0) {
+				g2.drawImage(moveSprite, X+this.boundingBox.width, Y, -this.boundingBox.width,this.boundingBox.height, null);
+			}else if (spriteLoaded & this.lastVx >= 0) {   // new
+	    	    g2.drawImage(sprite, X, Y, this.boundingBox.width, this.boundingBox.height, null);
+	    	}else if(spriteLoaded & this.lastVx < 0) {   // new
+	    	    g2.drawImage(sprite, X+this.boundingBox.width, Y, -this.boundingBox.width, this.boundingBox.height, null);
+	    	}else if(spriteLoaded) {   // new
+	    	    g2.drawImage(sprite, X, Y, this.boundingBox.width, this.boundingBox.height, null);
 	    	}else{
-			super.draw(g2);
-			Color temp = g2.getColor();
-			g2.setColor(Color.RED);
-			g2.draw(this.boundingBox);
-			g2.fill(this.boundingBox);
-			g2.setColor(temp);
+				super.draw(g2);
+				Color temp = g2.getColor();
+				g2.setColor(Color.RED);
+				g2.draw(this.boundingBox);
+				g2.fill(this.boundingBox);
+				g2.setColor(temp);
 	    	}
 		}
 		

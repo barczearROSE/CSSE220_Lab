@@ -20,7 +20,7 @@ public class Enemy extends Collidable {
 	private int speed = 10;
 	
 	public Enemy(int X, int Y, int maxDist, int minDist) {
-		super(X, Y);
+		super(X, Y,40);
 		this.maxDist = maxDist;
 		this.minDist = minDist;
 		try {
@@ -42,13 +42,15 @@ public class Enemy extends Collidable {
 			this.X = this.minDist + 1;
 		}
 		this.X += speed;
-		this.boundingBox.setBounds(X, Y, 10, 10);
+		this.boundingBox.setBounds(X, Y, this.scale, this.scale);
 	};
 	
 	@Override
 	public void draw(Graphics2D g2) {
-        if (spriteLoaded) {   
-    	    g2.drawImage(sprite, X, Y, 10, 10, null);
+        if (spriteLoaded & this.speed >=0) {
+        	g2.drawImage(sprite, X+this.scale, Y, -this.scale, this.scale, null);
+        }else if (spriteLoaded) {   
+    	    g2.drawImage(sprite, X, Y, this.scale, this.scale, null);
     	}
 	}
 

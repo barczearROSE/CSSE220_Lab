@@ -15,19 +15,22 @@ public class Collidable {
 	protected int Y;
 	protected int Vx;
 	protected int Vy;
+    protected int lastVx;
 	protected int startX;
 	protected int startY;
     public Rectangle boundingBox;
+    protected int scale;
 	
-	public Collidable(int X, int Y) {
+	public Collidable(int X, int Y,int scale) {
 		this.X = X;
 		this.Y = Y;
 		this.Vx = 0;
 		this.Vy = 0;
 		this.startX = X;
 		this.startY = Y;
-		this.boundingBox = new Rectangle(this.X,this.Y,10,10);
-	}
+		this.boundingBox = new Rectangle(this.X,this.Y,scale,scale);
+		this.scale= scale;
+		}
 	
 	public Collidable(int X, int Y, int width, int height) {
 		this.X = X;
@@ -63,9 +66,12 @@ public class Collidable {
 		this.Y = Y;
 	};
 	
-	public void setVx(int V) {
-		this.Vx = V;
-	};
+	public void setVx(int speed) {
+		if(this.Vx!=0) {
+			this.lastVx = this.Vx;
+		}
+		this.Vx = speed;
+	}
 	
 	public void setVy(int V) {
 		this.Vy = V;
