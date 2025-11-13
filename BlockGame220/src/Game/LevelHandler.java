@@ -23,6 +23,7 @@ public class LevelHandler extends JPanel{
 	private Level canvas = new Level();
 	private int score = 0;
 	JLabel gameOverScreen = new JLabel("Game Over!");
+	JLabel gameWinScreen = new JLabel("You Won!");
 	private int level = 1;
 	Timer timer;
 	
@@ -31,21 +32,23 @@ public class LevelHandler extends JPanel{
     JLabel lifeLabel = new JLabel("Score Default");
 	
 	private Platform lvl2Wall = new Platform(200,200,1000,1000);
-	private Player player = new Player(10,10);
+	private Player player = new Player(10,710);
 	
 	private Platform bottom = new Platform(0,768-10,1024,10);
 	private Platform firstJump = new Platform(200,600,100,50);
 	private Platform secondJump = new Platform(400, 500, 100, 50);
 	private Platform wall = new Platform(750,100,20,700);
+	private Platform wall2 = new Platform(0,0,10,750);
 	private Platform downward2 = new Platform(875,400,150,50);
 	private Platform downward1 = new Platform(770,150,150,50);
 	private Platform downward3 = new Platform(770,650,150,50);
 	
-	private Enemy enemy1 = new Enemy(450, 500, 400, 500);
+	private Enemy enemy1 = new Enemy(450, 400, 200, 500);
 	private Collectible col1 = new Collectible(300, 200);
 	
 	private ArrayList<Collidable> level1 = new ArrayList<Collidable>();
 	private ArrayList<Collidable> level2 = new ArrayList<Collidable>();
+	
 	
 	public LevelHandler() {
 		
@@ -60,16 +63,26 @@ public class LevelHandler extends JPanel{
 		level1.add(new Platform(200,300,100,50));
 		level1.add(new Platform(550,200,100,50));
 		level1.add(wall);
-		
+		level1.add(enemy1);
 		level1.add(downward1);
 		level1.add(downward2);
 		level1.add(downward3);
-		
+		level1.add(wall2);
 		
 		
 		
 		level2.add(player);
-		level2.add(new Platform(200,200,500,500));
+		level2.add(new Platform(200,200,100,20));
+		level2.add(new Platform(700,200,100,20));
+		
+		level2.add(new Platform(200,600,100,20));
+		level2.add(new Platform(700,600,100,20));
+		
+		level2.add(new Platform(450,400,100,20));
+		level2.add(new Collectible(475,350));
+		level2.add(new Collectible(225,150));
+		level2.add(new Collectible(725,550));
+		
 		
 		canvas = new Level(level1);
 		
@@ -109,7 +122,11 @@ public class LevelHandler extends JPanel{
 	        	   gameOver();
 	        	   timer.stop();
 	           }
-	           
+	           if(canvas.player.getScore() >= 6)
+	           {
+	        	   gameWin();
+	        	   timer.stop();
+	           }
 	          updateLevel();
 	        });
 		   timer.start();
@@ -199,6 +216,14 @@ private void buildKeys() {
 		
 	}
 	
+	private void gameWin()
+	{
+		gameWinScreen.setBounds(250,250,1000,200);
+		Font gameOverFont = new Font("Serif", Font.BOLD, 100);
+		gameWinScreen.setFont(gameOverFont);
+		canvas.add(gameWinScreen);
+	}
+	
 	private void updateLevel(){
 		 if(level == 2 && lastLevel == 1)
 		{
@@ -213,12 +238,13 @@ private void buildKeys() {
 	
 	private void updateScore(){
 		scoreLabel.setText("Score: " + canvas.player.getScore());
-		if(canvas.player.getScore() == 3)
+		if(canvas.player.getScore() == 1)
 		{
 			level = 2;
 			lastLevel = 1;
 			canvas.player.setScore(0);
 		}
+		
 	}
 	
 }
