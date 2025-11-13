@@ -81,6 +81,7 @@ public class LevelHandler extends JPanel{
 		level2.add(new Collectible(475,350));
 		level2.add(new Collectible(225,150));
 		level2.add(new Collectible(725,550));
+		level2.add(new Enemy(600,400,900,50));
 		
 		
 		canvas = new Level(level1);
