@@ -174,24 +174,24 @@ private void buildKeys() {
 	        }
 	        public void keyReleased(KeyEvent e) {
 	        	switch (e.getKeyCode()) {
-	            case KeyEvent.KEY_RELEASED:
-                	canvas.movePlayer(0);
-                	canvas.jumpPlayer(fallingSpeed);
-                	break;
+//	            case KeyEvent.KEY_RELEASED:
+//                	canvas.movePlayer(0);
+//                	canvas.jumpPlayer(fallingSpeed);
+//                	break;
                 case KeyEvent.VK_LEFT:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(fallingSpeed);
+//                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 case KeyEvent.VK_RIGHT:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(fallingSpeed);
+//                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 case KeyEvent.VK_UP:
-                	canvas.movePlayer(0);
+//                	canvas.movePlayer(0);
                 	canvas.jumpPlayer(fallingSpeed);
                     break;
                 case KeyEvent.VK_DOWN:
-                	canvas.movePlayer(0);
+//                	canvas.movePlayer(0);
                 	canvas.jumpPlayer(fallingSpeed);
                 default:
                 	canvas.movePlayer(0);
