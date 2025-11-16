@@ -37,11 +37,7 @@ public class LevelHandler extends JPanel{
 	private Platform firstJump = new Platform(200,600,100,50);
 	private Platform secondJump = new Platform(400, 500, 100, 50);
 	private Platform wall = new Platform(750,100,20,700);
-<<<<<<< HEAD
-	private Platform wall2 = new Platform(0,0,10,758);
-=======
 	private Platform wall2 = new Platform(0,0,10,768);
->>>>>>> branch 'master' of https://github.com/barczearROSE/CSSE220_Lab.git
 	private Platform downward2 = new Platform(875,400,150,50);
 	private Platform downward1 = new Platform(770,150,150,50);
 	private Platform downward3 = new Platform(770,650,150,50);
