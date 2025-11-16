@@ -20,7 +20,7 @@ public class LevelHandler extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Level canvas = new Level();
 //	private int score = 0;
-	private int fallingSpeed = 5;
+	private int fallingSpeed = 2;
 	JLabel gameOverScreen = new JLabel("Game Over!");
 	JLabel gameWinScreen = new JLabel("You Won!");
 	private int level = 1;
@@ -37,7 +37,7 @@ public class LevelHandler extends JPanel{
 	private Platform firstJump = new Platform(200,600,100,50);
 	private Platform secondJump = new Platform(400, 500, 100, 50);
 	private Platform wall = new Platform(750,100,20,700);
-	private Platform wall2 = new Platform(0,0,10,750);
+	private Platform wall2 = new Platform(0,0,10,758);
 	private Platform downward2 = new Platform(875,400,150,50);
 	private Platform downward1 = new Platform(770,150,150,50);
 	private Platform downward3 = new Platform(770,650,150,50);
@@ -127,6 +127,8 @@ public class LevelHandler extends JPanel{
 	        	   timer.stop();
 	           }
 	          updateLevel();
+	          
+	          System.out.println(canvas.player.X + "_" + canvas.player.Y + "_" + canvas.player.Vx + "_" + canvas.player.Vy + "_" + canvas.player.getAy());
 	        });
 		   timer.start();
 		  
@@ -153,7 +155,8 @@ private void buildKeys() {
 	                	canvas.movePlayer(10);
 	                	break;
 	                case KeyEvent.VK_UP:
-	                	canvas.jumpPlayer(-10);
+	                	canvas.jumpPlayer(-30);
+//	                	System.out.println(canvas.player.getAy());
 	                    break;
 	                case KeyEvent.VK_DOWN:
 	                	canvas.collect();
@@ -167,11 +170,10 @@ private void buildKeys() {
 	                	break;
 	                default:
 	                	canvas.movePlayer(0);
-	                	canvas.jumpPlayer(fallingSpeed);
 	                	break;
 	                
 	            }
-	        }
+	        }	        
 	        public void keyReleased(KeyEvent e) {
 	        	switch (e.getKeyCode()) {
 //	            case KeyEvent.KEY_RELEASED:
@@ -188,14 +190,13 @@ private void buildKeys() {
                 	break;
                 case KeyEvent.VK_UP:
 //                	canvas.movePlayer(0);
-                	canvas.jumpPlayer(fallingSpeed);
+                	canvas.jumpPlayer(0);
                     break;
                 case KeyEvent.VK_DOWN:
 //                	canvas.movePlayer(0);
-                	canvas.jumpPlayer(fallingSpeed);
+//                	canvas.jumpPlayer(fallingSpeed);
                 default:
                 	canvas.movePlayer(0);
-                	canvas.jumpPlayer(fallingSpeed);
                 	break;
                 
 	        	}
@@ -227,6 +228,7 @@ private void buildKeys() {
 			canvas.player.setX(10);
 			canvas.player.setY(10);
 			lastLevel = 2;
+			canvas.level = 2;
 			
 		}
 		 

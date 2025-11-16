@@ -17,7 +17,7 @@ import javax.swing.JComponent;
 public class Level extends JComponent{
 
 	private static final long serialVersionUID = 1L;
-	public static int level = 1;
+	public int level = 1;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	public final Color BG = Color.WHITE;
@@ -77,8 +77,10 @@ public class Level extends JComponent{
     	
     }
     
-    public void jumpPlayer(int velocityY) {
-    	player.setVy(velocityY);
+    public void jumpPlayer(int accelerationY) {
+    	if(player.getAy() > 0 && player.Vy==0) {
+    		player.setAy(player.getAy()+accelerationY);
+    	}
     }
     
     public void collect() {
@@ -88,15 +90,30 @@ public class Level extends JComponent{
     }
     
     public void checkBounds() {
-    	if(player.getX()>=WIDTH) {
-    		player.setX(0);
-    	}else if(player.getX() < 0) {
-    		player.setX(WIDTH);
-    	}
-    	if(player.getY()>=HEIGHT) {
-    		player.setY(0);
-    	}else if(player.getY() < 0) {
-    		player.setY(HEIGHT);
+    	if(level ==1) {
+    		if(player.getX()>=WIDTH) {
+	    		player.setX(WIDTH-1);
+	    	}else if(player.getX() < 0) {
+	    		player.setX(player.startX);
+	    	}
+	    	if(player.getY()>=HEIGHT) {
+	    		player.setY(player.startY);
+	    		player.setVy(0);
+	    	}else if(player.getY() < 0) {
+	    		player.setY(0);
+	    		
+	    	}
+    	}else {
+	    	if(player.getX()>=WIDTH) {
+	    		player.setX(0);
+	    	}else if(player.getX() < 0) {
+	    		player.setX(WIDTH);
+	    	}
+	    	if(player.getY()>=HEIGHT) {
+	    		player.setY(0);
+	    	}else if(player.getY() < 0) {
+	    		player.setY(HEIGHT);
+	    	}
     	}
     }
     

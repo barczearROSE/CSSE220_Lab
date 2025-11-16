@@ -21,10 +21,12 @@ public class Player extends Collidable {
     private boolean collect = false;
     private int lives;
     private int score;
+    private int Ay;
+    private int fallingSpeed = 2;
     private Rectangle head = new Rectangle(this.X+5,this.Y,this.boundingBox.width-5,1);
     private Rectangle feet = new Rectangle(this.X+5,this.Y + this.boundingBox.height,this.boundingBox.width-5,1);
-    private Rectangle left = new Rectangle(this.X,this.Y+5,1,this.boundingBox.height-5);
-    private Rectangle right = new Rectangle(this.X+this.boundingBox.width,this.Y+5,1,this.boundingBox.height-5);
+    private Rectangle left = new Rectangle(this.X,this.Y+5,1,this.boundingBox.height-15);
+    private Rectangle right = new Rectangle(this.X+this.boundingBox.width,this.Y+5,1,this.boundingBox.height-15);
 
 
 		public Player(int X, int Y) {
@@ -43,6 +45,13 @@ public class Player extends Collidable {
 	}
 		@Override
 		public void move(){
+			if(this.Ay>fallingSpeed) {
+				this.Ay = fallingSpeed;
+			}
+			this.Vy += this.Ay;
+			if(this.Vy>10) {
+				this.Vy = 10;
+			}
 			this.X += this.Vx;
 			this.Y += this.Vy;
 			this.boundingBox.setBounds(X, Y, this.boundingBox.width, this.boundingBox.height);
@@ -51,9 +60,9 @@ public class Player extends Collidable {
 			
 			this.feet.setBounds(this.X+5,this.Y + this.boundingBox.height-1,this.boundingBox.width-10,1);
 			
-			this.left.setBounds(this.X,this.Y+10,1,this.boundingBox.height-15);
+			this.left.setBounds(this.X,this.Y+10,1,this.boundingBox.height-20);
 			
-			this.right.setBounds(this.X+this.boundingBox.width-1,this.Y+10,1,this.boundingBox.height-15);
+			this.right.setBounds(this.X+this.boundingBox.width-1,this.Y+10,1,this.boundingBox.height-20);
 		}
 		
 		@Override
@@ -66,20 +75,32 @@ public class Player extends Collidable {
 						this.setX(c.getX() - this.boundingBox.width);
 					}else if(c.boundingBox.intersects(this.head)) { // head collision
 						this.setY(c.getY() + c.boundingBox.height);
+						this.Ay = fallingSpeed;
+						this.Vy = 0;
 					}else if(c.boundingBox.intersects(this.feet)) { // foot collision
 						this.setY(c.getY() - this.boundingBox.height);
+						this.Ay = 0;
+						this.Vy = 0;
 					}
 				}else if(c instanceof Enemy) {
 					this.lives--;
 					this.X = startX;
 					this.Y = startY;
+					this.Ay = 0;
+					this.Vy = 0;
+					this.Vx = 0;
 				}else if(c instanceof Collectible) {
 					if(this.collect & !((Collectible) c).getCollected()) {
 						this.score++;
 						((Collectible) c).setCollected(true);
 					}
 				}
+			}else {
+				if(this.Ay<fallingSpeed) {
+					this.Ay += fallingSpeed;
+				}
 			}
+//			move();
 			return super.collide(c);
 		}
 		
@@ -137,4 +158,12 @@ public class Player extends Collidable {
 		public void setCollect(boolean b) {
 			this.collect = b;
 		}
+		public void setAy(int i) {
+			this.Ay = i;
+		}
+		public int getAy() {
+			return this.Ay;
+		}
+		
 }
+
