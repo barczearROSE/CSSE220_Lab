@@ -92,7 +92,7 @@ public class Level extends JComponent{
     public void checkBounds() {
     	if(level ==1) {
     		if(player.getX()>=WIDTH) {
-	    		player.setX(WIDTH-1);
+	    		player.setX(WIDTH-10);
 	    	}else if(player.getX() < 0) {
 	    		player.setX(player.startX);
 	    	}

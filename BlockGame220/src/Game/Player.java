@@ -69,18 +69,32 @@ public class Player extends Collidable {
 		public boolean collide(Collidable c) {
 			if(super.collide(c)) {
 				if(c instanceof Platform) {
-					if(c.boundingBox.intersects(this.left)) { // left side collison
-						this.setX(c.getX() + c.boundingBox.width);
-					}else if(c.boundingBox.intersects(this.right)) { //right side collison
-						this.setX(c.getX() - this.boundingBox.width);
-					}else if(c.boundingBox.intersects(this.head)) { // head collision
-						this.setY(c.getY() + c.boundingBox.height);
-						this.Ay = fallingSpeed;
-						this.Vy = 0;
-					}else if(c.boundingBox.intersects(this.feet)) { // foot collision
-						this.setY(c.getY() - this.boundingBox.height);
-						this.Ay = 0;
-						this.Vy = 0;
+					if(this.Vy<0 && this.Vx==0) {
+						if(c.boundingBox.intersects(this.head)) { // head collision
+							this.setY(c.getY() + c.boundingBox.height);
+							this.Ay = fallingSpeed;
+							this.Vy = 0;
+						}
+					}else if(this.Vy>0 && this.Vx==0) {
+						if(c.boundingBox.intersects(this.feet)) { // foot collision
+							this.setY(c.getY() - this.boundingBox.height);
+							this.Ay = 0;
+							this.Vy = 0;
+						}
+					}else {
+						if(c.boundingBox.intersects(this.left)) { // left side collison
+							this.setX(c.getX() + c.boundingBox.width);
+						}else if(c.boundingBox.intersects(this.right)) { //right side collison
+							this.setX(c.getX() - this.boundingBox.width);
+						}else if(c.boundingBox.intersects(this.head)) { // head collision
+							this.setY(c.getY() + c.boundingBox.height);
+							this.Ay = fallingSpeed;
+							this.Vy = 0;
+						}else if(c.boundingBox.intersects(this.feet)) { // foot collision
+							this.setY(c.getY() - this.boundingBox.height);
+							this.Ay = 0;
+							this.Vy = 0;
+						}
 					}
 				}else if(c instanceof Enemy) {
 					this.lives--;
@@ -108,20 +122,20 @@ public class Player extends Collidable {
 		@Override
 		public void draw(Graphics2D g2) {
 			//Platform collision boxes test
-//			Color temp = g2.getColor();
-//			g2.setColor(Color.RED);
-//			g2.draw(this.head);
-//			g2.fill(this.head);
-//			g2.setColor(Color.orange);
-//			g2.draw(this.feet);
-//			g2.fill(this.feet);
-//			g2.setColor(Color.GREEN);
-//			g2.draw(this.left);
-//			g2.fill(this.left);
-//			g2.setColor(Color.BLUE);
-//			g2.draw(this.right);
-//			g2.fill(this.right);
-//			g2.setColor(temp);
+			Color temp = g2.getColor();
+			g2.setColor(Color.RED);
+			g2.draw(this.head);
+			g2.fill(this.head);
+			g2.setColor(Color.orange);
+			g2.draw(this.feet);
+			g2.fill(this.feet);
+			g2.setColor(Color.GREEN);
+			g2.draw(this.left);
+			g2.fill(this.left);
+			g2.setColor(Color.BLUE);
+			g2.draw(this.right);
+			g2.fill(this.right);
+			g2.setColor(temp);
 			
 			if (buffSpriteLoaded & this.Vx > 0){
 	    		g2.drawImage(moveSprite, X, Y, this.boundingBox.width,this.boundingBox.height, null);
@@ -135,7 +149,7 @@ public class Player extends Collidable {
 	    	    g2.drawImage(sprite, X, Y, this.boundingBox.width, this.boundingBox.height, null);
 	    	}else{
 				super.draw(g2);
-				Color temp = g2.getColor();
+				 temp = g2.getColor();
 				g2.setColor(Color.RED);
 				g2.draw(this.boundingBox);
 				g2.fill(this.boundingBox);
