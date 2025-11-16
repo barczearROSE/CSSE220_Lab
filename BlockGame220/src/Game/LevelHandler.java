@@ -26,7 +26,7 @@ public class LevelHandler extends JPanel{
 	private int level = 1;
 	Timer timer;
 	
-	private int lastLevel;
+	private int lastLevel = 0;
 	JLabel scoreLabel = new JLabel("Life Default");
     JLabel lifeLabel = new JLabel("Score Default");
 	
@@ -37,7 +37,7 @@ public class LevelHandler extends JPanel{
 	private Platform firstJump = new Platform(200,600,100,50);
 	private Platform secondJump = new Platform(400, 500, 100, 50);
 	private Platform wall = new Platform(750,100,20,700);
-	private Platform wall2 = new Platform(0,0,10,750);
+	private Platform wall2 = new Platform(0,0,10,768);
 	private Platform downward2 = new Platform(875,400,150,50);
 	private Platform downward1 = new Platform(770,150,150,50);
 	private Platform downward3 = new Platform(770,650,150,50);
@@ -67,21 +67,22 @@ public class LevelHandler extends JPanel{
 		level1.add(downward2);
 		level1.add(downward3);
 		level1.add(wall2);
+		level1.add(new Platform(1014,0,10,768));
 		
 		
 		
 		level2.add(player);
-		level2.add(new Platform(200,200,100,20));
-		level2.add(new Platform(700,200,100,20));
+		level2.add(new Platform(150,200,200,20));
+		level2.add(new Platform(650,200,200,20));
 		
-		level2.add(new Platform(200,600,100,20));
-		level2.add(new Platform(700,600,100,20));
+		level2.add(new Platform(150,600,200,20));
+		level2.add(new Platform(650,600,200,20));
 		
-		level2.add(new Platform(450,400,100,20));
+		level2.add(new Platform(350,400,300,20));
 		level2.add(new Collectible(475,350));
-		level2.add(new Collectible(225,150));
-		level2.add(new Collectible(725,550));
-		level2.add(new Enemy(600,400,900,50));
+		level2.add(new Collectible(725,150));
+		level2.add(new Collectible(225,550));
+		level2.add(new Enemy(450,350,650,350));
 		
 		
 		canvas = new Level(level1);
@@ -224,8 +225,8 @@ private void buildKeys() {
 	private void updateLevel(){
 		 if(level == 2 && lastLevel == 1){
 			canvas.setLevel(level2);
-			canvas.player.setX(10);
-			canvas.player.setY(10);
+			canvas.player.setX(200);
+			canvas.player.setY(150);
 			lastLevel = 2;
 			
 		}
@@ -234,10 +235,10 @@ private void buildKeys() {
 	
 	private void updateScore(){
 		scoreLabel.setText("Score: " + canvas.player.getScore());
-		if(canvas.player.getScore() == 3){
-			level = 2;
-			lastLevel = 1;
-			canvas.player.setScore(0);
+		if(canvas.player.getScore() == 3 && level == 1){
+			level += 1;
+			lastLevel += 1;
+//			canvas.player.setScore(0);
 		}
 		
 	}
