@@ -19,7 +19,7 @@ public class Enemy extends Collidable {
 	private int minDist;
 	private int speed = 10;
 	private int type;
-//	private int playerX;
+	private int playerX;
 	private int playerY;
 	
 	public Enemy(int X, int Y, int maxDist, int minDist) {
