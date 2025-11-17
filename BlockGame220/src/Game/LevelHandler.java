@@ -20,7 +20,7 @@ public class LevelHandler extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Level canvas = new Level();
 //	private int score = 0;
-	private int fallingSpeed = 2;
+//	private int fallingSpeed = 2;
 	JLabel gameOverScreen = new JLabel("Game Over!");
 	JLabel gameWinScreen = new JLabel("You Won!");
 	private int level = 1;
