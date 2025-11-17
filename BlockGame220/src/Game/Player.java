@@ -122,20 +122,20 @@ public class Player extends Collidable {
 		@Override
 		public void draw(Graphics2D g2) {
 			//Platform collision boxes test
-			Color temp = g2.getColor();
-			g2.setColor(Color.RED);
-			g2.draw(this.head);
-			g2.fill(this.head);
-			g2.setColor(Color.orange);
-			g2.draw(this.feet);
-			g2.fill(this.feet);
-			g2.setColor(Color.GREEN);
-			g2.draw(this.left);
-			g2.fill(this.left);
-			g2.setColor(Color.BLUE);
-			g2.draw(this.right);
-			g2.fill(this.right);
-			g2.setColor(temp);
+//			Color temp = g2.getColor();
+//			g2.setColor(Color.RED);
+//			g2.draw(this.head);
+//			g2.fill(this.head);
+//			g2.setColor(Color.orange);
+//			g2.draw(this.feet);
+//			g2.fill(this.feet);
+//			g2.setColor(Color.GREEN);
+//			g2.draw(this.left);
+//			g2.fill(this.left);
+//			g2.setColor(Color.BLUE);
+//			g2.draw(this.right);
+//			g2.fill(this.right);
+//			g2.setColor(temp);
 			
 			if (buffSpriteLoaded & this.Vx > 0){
 	    		g2.drawImage(moveSprite, X, Y, this.boundingBox.width,this.boundingBox.height, null);
@@ -149,7 +149,7 @@ public class Player extends Collidable {
 	    	    g2.drawImage(sprite, X, Y, this.boundingBox.width, this.boundingBox.height, null);
 	    	}else{
 				super.draw(g2);
-				 temp = g2.getColor();
+				Color temp = g2.getColor();
 				g2.setColor(Color.RED);
 				g2.draw(this.boundingBox);
 				g2.fill(this.boundingBox);

@@ -129,7 +129,7 @@ public class LevelHandler extends JPanel{
 	           }
 	          updateLevel();
 	          
-	          System.out.println(canvas.player.X + "_" + canvas.player.Y + "_" + canvas.player.Vx + "_" + canvas.player.Vy + "_" + canvas.player.getAy());
+//	          System.out.println(canvas.player.X + "_" + canvas.player.Y + "_" + canvas.player.Vx + "_" + canvas.player.Vy + "_" + canvas.player.getAy());
 	        });
 		   timer.start();
 		  
